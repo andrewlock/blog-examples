@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ModelBindingASPNET4.Models;
 
@@ -27,6 +29,33 @@ namespace ModelBindingASPNET4.Controllers
         {
             return Json(person);
         }
+
+        [HttpPost]
+        public ActionResult IndexApiJsonHeader(Person person)
+        {
+            ValidateRequestHeader(Request);
+
+            return Json(person);
+        }
+
+        private void ValidateRequestHeader(HttpRequestBase request)
+        {
+            string cookieToken = "";
+            string formToken = "";
+
+            var token = request.Headers["RequestVerificationToken"];
+            if (!string.IsNullOrEmpty(token))
+            {
+                string[] tokens = token.Split(':');
+                if (tokens.Length == 2)
+                {
+                    cookieToken = tokens[0].Trim();
+                    formToken = tokens[1].Trim();
+                }
+            }
+            AntiForgery.Validate(cookieToken, formToken);
+        }
+
 
         public ActionResult About()
         {
