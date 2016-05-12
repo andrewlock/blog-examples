@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ModelBindingASPNET4.Models;
 
 namespace ModelBindingASPNET4.Controllers
 {
@@ -11,6 +12,18 @@ namespace ModelBindingASPNET4.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Person person)
+        {
+            return View(person);
+        }
+
+        [HttpPost]
+        public ActionResult IndexApi(Person person)
+        {
+            return Json(person);
         }
 
         public ActionResult About()
