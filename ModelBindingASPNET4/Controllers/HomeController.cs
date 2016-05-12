@@ -15,12 +15,14 @@ namespace ModelBindingASPNET4.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(Person person)
         {
             return View(person);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult IndexApi(Person person)
         {
             return Json(person);
