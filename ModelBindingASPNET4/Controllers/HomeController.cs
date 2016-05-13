@@ -30,6 +30,11 @@ namespace ModelBindingASPNET4.Controllers
             return Json(person);
         }
 
+        public ActionResult ApiTest()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult IndexApiJsonHeader(Person person)
         {
@@ -54,21 +59,6 @@ namespace ModelBindingASPNET4.Controllers
                 }
             }
             AntiForgery.Validate(cookieToken, formToken);
-        }
-
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }
