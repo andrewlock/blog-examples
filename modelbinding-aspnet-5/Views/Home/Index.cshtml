@@ -1,0 +1,148 @@
+@model ModelBindingASPNET5.Models.Person
+@using Microsoft.AspNetCore.Antiforgery
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery af
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <h1>Model Biding ASP.NET 5</h1>
+</div>
+
+@if (Model == null)
+{
+    <p>No person posted.</p>
+}
+else
+{
+    <p>Person posted successfully!</p>
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form asp-controller="Home" asp-action="Index" method="post">
+            
+            <div class="form-group">
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Age)
+                @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitUrlEncoded" type="button" class="btn btn-default">Submit Ajax as x-www-form-urlencoded</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJson" type="button" class="btn btn-default">Submit Ajax as json</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJsonToFromBody" type="button" class="btn btn-default">Submit JSON to FromBody</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJsonToFromForm" type="button" class="btn btn-default">Submit JSON to FromBody</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitUrlEncodedtoFromBody" type="button" class="btn btn-default">Submit endocded form to FromBody</button>
+            </div>
+        </form>
+    </div>
+</div>
+@functions{
+    public string TokenHeaderValue()
+    {
+        AntiforgeryTokenSet tokens = af.GetTokens(this.Context);
+        return tokens.CookieToken + ":" + tokens.RequestToken;
+    }
+
+    public string FormTokenValue()
+    {
+        AntiforgeryTokenSet tokens = af.GetTokens(this.Context);
+        return tokens.RequestToken;
+    }
+}
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        function postToController(data, dataType, url) {
+            url = url || '/Home/IndexApi';
+            console.log('Submitting form...');
+            $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: 'json',
+                contentType: dataType,
+                data: data,
+                success: function(result) {
+                    console.log('Data received: ');
+                    console.log(result);
+                },
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
+        }
+
+        function getFormDataAsJson() {
+            return {
+                '@Html.IdFor(x => x.FirstName)': $('#@Html.IdFor(x=>x.FirstName)').val(),
+                '@Html.IdFor(x => x.LastName)': $('#@Html.IdFor(x=>x.LastName)').val(),
+                '@Html.IdFor(x => x.Age)': $('#@Html.IdFor(x=>x.Age)').val()
+            }
+        }
+
+        $('#btnSubmitUrlEncoded').click(function () {
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+
+            postToController(data, "application/x-www-form-urlencoded; charset=utf-8");
+
+            return false;
+        });
+
+        $('#btnSubmitJson').click(function () {
+            var data = getFormDataAsJson();
+
+            postToController(JSON.stringify(data), "application/json; charset=utf-8");
+
+            return false;
+        });
+
+        $('#btnSubmitJsonToFromBody').click(function () {
+            var data = getFormDataAsJson();
+
+            postToController(JSON.stringify(data), "application/json; charset=utf-8", '/Home/IndexApiFromBody');
+
+            return false;
+        });
+
+        $('#btnSubmitJsonToFromForm').click(function () {
+            var data = getFormDataAsJson();
+
+            postToController(JSON.stringify(data), "application/json; charset=utf-8", '/Home/IndexApiFromForm');
+
+            return false;
+        });
+
+        $('#btnSubmitUrlEncodedtoFromBody').click(function () {
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+
+            postToController(data, "application/x-www-form-urlencoded; charset=utf-8", '/Home/IndexApiFromBody');
+
+            return false;
+        });
+    </script>
+}
+
