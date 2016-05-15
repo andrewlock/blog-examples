@@ -1,3 +1,4 @@
+using System;
 using AddingDefaultSecurityHeaders.Middleware.Constants;
 
 namespace AddingDefaultSecurityHeaders.Middleware
@@ -150,6 +151,39 @@ namespace AddingDefaultSecurityHeaders.Middleware
         public SecurityHeadersBuilder RemoveServerHeader()
         {
             _policy.RemoveHeaders.Add(ServerConstants.Header);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a custom header to all requests
+        /// </summary>
+        /// <param name="header">The header name</param>
+        /// <param name="value">The value for the header</param>
+        /// <returns></returns>
+        public SecurityHeadersBuilder AddCustomHeader(string header, string value)
+        {
+            if (string.IsNullOrEmpty(header))
+            {
+                throw new ArgumentNullException(nameof(header));
+            }
+
+            _policy.AddHeaders[header] = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Remove a header from all requests
+        /// </summary>
+        /// <param name="header">The to remove</param>
+        /// <returns></returns>
+        public SecurityHeadersBuilder RemoveHeader(string header)
+        {
+            if (string.IsNullOrEmpty(header))
+            {
+                throw new ArgumentNullException(nameof(header));
+            }
+
+            _policy.RemoveHeaders.Add(header);
             return this;
         }
 
