@@ -1,0 +1,170 @@
+﻿@model ModelBindingASPNET4.Models.Person
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <h1>Model Biding ASP.NET 4</h1>
+</div>
+
+@if (Model == null)
+{
+    <p>No person posted.</p>
+}
+else
+{
+    <p>Person posted successfully!</p>
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            <div class="form-group">
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Age)
+                @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitUrlEncoded" type="submit" class="btn btn-default">Submit Ajax as x-www-form-urlencoded</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJson" type="submit" class="btn btn-default">Submit Ajax as json</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitUrlEncodedWithAntiCsrf" type="submit" class="btn btn-default">Submit Form Encoded with AntiCSRF in Body</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitUrlEncodedWithAntiCsrfInHeader" type="submit" class="btn btn-default">Submit Form Encoded with AntiCSRF in Header</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJsonWithAntiCsrf" type="submit" class="btn btn-default">Submit JSON with AntiCSRF in Header</button>
+            </div>
+            <div class="form-group">
+                <button id="btnSubmitJsonWithoutAntiCsrf" type="submit" class="btn btn-default">Submit JSON without AntiCSRF </button>
+            </div>
+        }
+    </div>
+</div>
+@functions{
+    public string TokenHeaderValue()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        function postToController(data, dataType, url) {
+            console.log('Submitting form...');
+            $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: 'json',
+                contentType: dataType,
+                data: data,
+                success: function(result) {
+                    console.log('Data received: ');
+                    console.log(result);
+                },
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
+        }
+        function postToControllerWithAntiCSRF(data, dataType) {
+            console.log('Submitting form...');
+            $.ajax({
+                type: 'POST',
+                url: '/api/Person/Protected',
+                dataType: 'json',
+                contentType: dataType,
+                data: data,
+                success: function(result) {
+                    console.log('Data received: ');
+                    console.log(result);
+                },
+                failure: function(errMsg) {
+                    alert(errMsg);
+                },
+                headers: {
+                    'RequestVerificationToken': '@TokenHeaderValue()'
+                }
+            });
+        }
+
+        function getFormDataAsJson() {
+            return {
+                '@Html.IdFor(x => x.FirstName)': $('#@Html.IdFor(x=>x.FirstName)').val(),
+                '@Html.IdFor(x => x.LastName)': $('#@Html.IdFor(x=>x.LastName)').val(),
+                '@Html.IdFor(x => x.Age)': $('#@Html.IdFor(x=>x.Age)').val()
+            }
+        }
+
+        $('#btnSubmitUrlEncoded').click(function () {
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+
+            postToController(data, "application/x-www-form-urlencoded; charset=utf-8", '/api/Person/UnProtected');
+
+            return false;
+        });
+
+        $('#btnSubmitJson').click(function () {
+            var data = getFormDataAsJson();
+
+            postToController(JSON.stringify(data), "application/json; charset=utf-8", '/api/Person/UnProtected');
+
+            return false;
+        });
+
+        $('#btnSubmitJsonWithAntiCsrf').click(function () {
+            var data = getFormDataAsJson();
+
+            postToControllerWithAntiCSRF(JSON.stringify(data), "application/json; charset=utf-8");
+
+            return false;
+        });
+
+        $('#btnSubmitJsonWithoutAntiCsrf').click(function () {
+            var data = getFormDataAsJson();
+
+            postToController(JSON.stringify(data), "application/json; charset=utf-8", '/api/Person/Protected');
+
+            return false;
+        });
+
+        $('#btnSubmitUrlEncodedWithAntiCsrf').click(function () {
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+
+            postToController(data, "application/x-www-form-urlencoded; charset=utf-8", '/api/Person/Protected');
+
+            return false;
+        });
+
+        $('#btnSubmitUrlEncodedWithAntiCsrfInHeader').click(function () {
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+
+            postToControllerWithAntiCSRF(data, "application/x-www-form-urlencoded; charset=utf-8");
+
+            return false;
+        });
+
+    </script>
+}
+
