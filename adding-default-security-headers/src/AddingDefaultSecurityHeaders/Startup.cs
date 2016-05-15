@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AddingDefaultSecurityHeaders.Middleware;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,9 @@ namespace AddingDefaultSecurityHeaders
             }
 
             app.UseIISPlatformHandler();
-
+            app.UseSecurityHeadersMiddleware(
+                new SecurityHeadersBuilder()
+                    .AddDefaultSecurePolicy());
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
