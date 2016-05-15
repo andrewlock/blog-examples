@@ -35,7 +35,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddFrameOptionsDeny()
         {
-            _policy.AddHeaders[FrameOptionsConstants.Header] = FrameOptionsConstants.Deny;
+            _policy.SetHeaders[FrameOptionsConstants.Header] = FrameOptionsConstants.Deny;
             return this;
         }
 
@@ -45,7 +45,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddFrameOptionsSameOrigin()
         {
-            _policy.AddHeaders[FrameOptionsConstants.Header] = FrameOptionsConstants.SameOrigin;
+            _policy.SetHeaders[FrameOptionsConstants.Header] = FrameOptionsConstants.SameOrigin;
             return this;
         }
 
@@ -56,7 +56,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// <param name="uri">The uri of the origin in which the page may be displayed in a frame</param>
         public SecurityHeadersBuilder AddFrameOptionsSameOrigin(string uri)
         {
-            _policy.AddHeaders[FrameOptionsConstants.Header] = string.Format(FrameOptionsConstants.AllowFromUri + uri);
+            _policy.SetHeaders[FrameOptionsConstants.Header] = string.Format(FrameOptionsConstants.AllowFromUri, uri);
             return this;
         }
 
@@ -67,7 +67,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddXssProtectionEnabled()
         {
-            _policy.AddHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Enabled;
+            _policy.SetHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Enabled;
             return this;
         }
 
@@ -77,7 +77,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddXssProtectionDisabled()
         {
-            _policy.AddHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Disabled;
+            _policy.SetHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Disabled;
             return this;
         }
 
@@ -87,7 +87,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddXssProtectionBlock()
         {
-            _policy.AddHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Block;
+            _policy.SetHeaders[XssProtectionConstants.Header] = XssProtectionConstants.Block;
             return this;
         }
 
@@ -97,7 +97,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddXssProtectionReport(string reportUrl)
         {
-            _policy.AddHeaders[XssProtectionConstants.Header] =
+            _policy.SetHeaders[XssProtectionConstants.Header] =
                 string.Format(XssProtectionConstants.Report, reportUrl);
             return this;
         }
@@ -108,7 +108,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddStrictTransportSecurityMaxAge(int maxAge = OneYearInSeconds)
         {
-            _policy.AddHeaders[StrictTransportSecurityConstants.Header] =
+            _policy.SetHeaders[StrictTransportSecurityConstants.Header] =
                 string.Format(StrictTransportSecurityConstants.MaxAge, maxAge);
             return this;
         }
@@ -119,7 +119,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddStrictTransportSecurityMaxAgeIncludeSubDomains(int maxAge = OneYearInSeconds)
         {
-            _policy.AddHeaders[StrictTransportSecurityConstants.Header] =
+            _policy.SetHeaders[StrictTransportSecurityConstants.Header] =
                 string.Format(StrictTransportSecurityConstants.MaxAgeIncludeSubdomains, maxAge);
             return this;
         }
@@ -128,9 +128,9 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// Add Strict-Transport-Security max-age=0 to all requests.
         /// Tells the user-agent to remove, or not cache the host in the STS cache
         /// </summary>
-        public SecurityHeadersBuilder AddStrictTransportSecuritNoCache()
+        public SecurityHeadersBuilder AddStrictTransportSecurityNoCache()
         {
-            _policy.AddHeaders[StrictTransportSecurityConstants.Header] =
+            _policy.SetHeaders[StrictTransportSecurityConstants.Header] =
                 StrictTransportSecurityConstants.NoCache;
             return this;
         }
@@ -141,7 +141,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
         /// </summary>
         public SecurityHeadersBuilder AddContentTypeOptionsNoSniff()
         {
-            _policy.AddHeaders[ContentTypeOptionsConstants.Header] = ContentTypeOptionsConstants.NoSniff;
+            _policy.SetHeaders[ContentTypeOptionsConstants.Header] = ContentTypeOptionsConstants.NoSniff;
             return this;
         }
 
@@ -167,7 +167,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
                 throw new ArgumentNullException(nameof(header));
             }
 
-            _policy.AddHeaders[header] = value;
+            _policy.SetHeaders[header] = value;
             return this;
         }
 

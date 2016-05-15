@@ -3,31 +3,21 @@ using Microsoft.AspNet.Builder;
 
 namespace AddingDefaultSecurityHeaders.Middleware
 {
-    public static class MiddlewareExtensions
+public static class MiddlewareExtensions
+{
+    public static IApplicationBuilder UseSecurityHeadersMiddleware(this IApplicationBuilder app, SecurityHeadersBuilder builder)
     {
-        public static IApplicationBuilder UseSecurityHeadersMiddleware(this IApplicationBuilder app)
+        if (app == null)
         {
-            if (app == null)
-            {
-                throw new ArgumentNullException(nameof(app));
-            }
-
-            return app.UseMiddleware<SecurityHeadersMiddleware>();
+            throw new ArgumentNullException(nameof(app));
         }
 
-        public static IApplicationBuilder UseSecurityHeadersMiddleware(this IApplicationBuilder app, SecurityHeadersBuilder builder)
+        if (builder == null)
         {
-            if (app == null)
-            {
-                throw new ArgumentNullException(nameof(app));
-            }
-
-            if (builder == null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
-            return app.UseMiddleware<SecurityHeadersMiddleware>(builder.Build());
+            throw new ArgumentNullException(nameof(builder));
         }
+
+        return app.UseMiddleware<SecurityHeadersMiddleware>(builder.Build());
     }
+}
 }

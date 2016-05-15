@@ -10,21 +10,12 @@ using Microsoft.Extensions.Primitives;
 namespace AddingDefaultSecurityHeaders.Middleware
 {
     /// <summary>
-    /// An ASP.NET middleware for adding secuerity headers.
+    /// An ASP.NET middleware for adding security headers.
     /// </summary>
     public class SecurityHeadersMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly SecurityHeadersPolicy _policy;
-
-        /// <summary>
-        /// Instantiates a new <see cref="SecurityHeadersMiddleware"/>.
-        /// </summary>
-        /// <param name="next">The next middleware in the pipeline.</param>
-        public SecurityHeadersMiddleware(RequestDelegate next) :
-            this(next, new SecurityHeadersPolicy())
-        {
-        }
 
         /// <summary>
         /// Instantiates a new <see cref="SecurityHeadersMiddleware"/>.
@@ -63,7 +54,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
 
             var headers = response.Headers;
 
-            foreach (var headerValuePair in _policy.AddHeaders)
+            foreach (var headerValuePair in _policy.SetHeaders)
             {
                 headers[headerValuePair.Key] = headerValuePair.Value;
             }
