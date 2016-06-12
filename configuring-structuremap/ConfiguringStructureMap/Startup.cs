@@ -29,6 +29,8 @@ namespace ConfiguringStructureMap
         {
             // Add framework services.
             services.AddMvc();
+
+            ConfigureIoC(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +44,15 @@ namespace ConfiguringStructureMap
 
         public void ConfigureIoC(IServiceCollection services)
         {
-            //TODO: Add IoC Config
+            services.AddTransient<IPurchasingService, PurchasingService>();
+            services.AddTransient<IGamingService, CrosswordService>();
+            services.AddTransient<IGamingService, SudokuService>();
+            services.AddTransient<ConcreteService, ConcreteService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(provider => new UnitOfWork(priority: 3));
+
+            services.Add(ServiceDescriptor.Transient(typeof(ILeaderboard<>), typeof(Leaderboard<>)));
+            services.Add(ServiceDescriptor.Transient(typeof(IValidator<>), typeof(DefaultValidator<>))); 
+            services.AddTransient<IValidator<UserModel>, UserModelValidator>();
         }
     }
 }
