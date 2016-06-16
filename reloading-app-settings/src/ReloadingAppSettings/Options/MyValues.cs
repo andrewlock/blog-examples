@@ -6,6 +6,6 @@ namespace ReloadingAppSettings.Options
 {
     public class MyValues
     {
-        public IList<string> DefaultValues { get; } = new List<string>();
+        public string DefaultValue { get; set; }
     }
 }

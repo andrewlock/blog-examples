@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
 using ReloadingAppSettings.Options;
 
 namespace ReloadingAppSettings
@@ -46,10 +40,10 @@ namespace ReloadingAppSettings
             loggerFactory.AddDebug();
 
             monitor.OnChange(vals =>
-                             {
-                                 var logger = loggerFactory.CreateLogger<IOptionsMonitor<MyValues>>();
-                                 logger.LogDebug($"Config changed: {string.Join(", ", vals)}");
-                             });
+                                {
+                                    var logger = loggerFactory.CreateLogger<IOptionsMonitor<MyValues>>();
+                                    logger.LogDebug($"Config changed: {string.Join(", ", vals)}");
+                                });
 
             app.UseMvc();
 
@@ -66,9 +60,8 @@ namespace ReloadingAppSettings
 
             public async Task Invoke(HttpContext context, IOptionsMonitor<MyValues> values)
             {
-                await context.Response.WriteAsync(string.Join(",", values.CurrentValue.DefaultValues));
+                await context.Response.WriteAsync(values.CurrentValue.DefaultValue);
             }
         }
-
     }
 }

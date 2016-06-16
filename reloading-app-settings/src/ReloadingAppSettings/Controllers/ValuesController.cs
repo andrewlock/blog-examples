@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using ReloadingAppSettings.Options;
 
@@ -16,11 +15,19 @@ namespace ReloadingAppSettings.Controllers
             _myValues = values.CurrentValue;
         }
 
+        // Uncomment to inject IConfigurationRoot instead
+        // private readonly IConfigurationRoot _config;
+        // public ValuesController(IConfigurationRoot config)
+        // {
+        //     _config = config;
+        // }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return _myValues.DefaultValues;
+            return _myValues.DefaultValue;
+            // return _config.GetValue<string>("MyValues:DefaultValue");
         }
     }
 }
