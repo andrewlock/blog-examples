@@ -55,6 +55,6 @@
   },
 
   "tooling": {
-    "defaultNamespace": "ConfiguringStructureMap"
+    "defaultNamespace": "ConfiguringBuiltInContainer"
   }
 }

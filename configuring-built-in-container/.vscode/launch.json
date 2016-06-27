@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/ConfiguringStructureMap.dll",
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/ConfiguringBuiltInContainer.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/ConfiguringStructureMap",
+            "cwd": "${workspaceRoot}/ConfiguringBuiltInContainer",
             "stopAtEntry": false,
             "externalConsole": false
         },
@@ -17,9 +17,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/ConfiguringStructureMap.dll",
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/ConfiguringBuiltInContainer.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/ConfiguringStructureMap",
+            "cwd": "${workspaceRoot}/ConfiguringBuiltInContainer",
             "stopAtEntry": false,
             "launchBrowser": {
                 "enabled": true,

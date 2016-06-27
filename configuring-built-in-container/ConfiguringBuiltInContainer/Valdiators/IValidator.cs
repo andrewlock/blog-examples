@@ -1,4 +1,4 @@
-namespace ConfiguringStructureMap
+namespace ConfiguringBuiltInContainer
 {
     public interface IValidator<T>
     {
