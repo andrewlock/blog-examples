@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace ConfiguringBuiltInContainer
+{
+    public class Startup
+    {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add framework services.
+            services.AddMvc();
+
+            ConfigureIoC(services);
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseMvc();
+        }
+
+        public void ConfigureIoC(IServiceCollection services)
+        {
+            services.AddTransient<IPurchasingService, PurchasingService>();
+            services.AddTransient<IGamingService, CrosswordService>();
+            services.AddTransient<IGamingService, SudokuService>();
+            services.AddTransient<ConcreteService, ConcreteService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(provider => new UnitOfWork(priority: 3));
+
+            services.Add(ServiceDescriptor.Transient(typeof(ILeaderboard<>), typeof(Leaderboard<>)));
+            services.Add(ServiceDescriptor.Transient(typeof(IValidator<>), typeof(DefaultValidator<>))); 
+            services.AddTransient<IValidator<UserModel>, UserModelValidator>();
+        }
+    }
+}
