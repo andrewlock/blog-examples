@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject AppTenant Tenant;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">DatabaseMultiTenancyWithSaasKit</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@Tenant.Name</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

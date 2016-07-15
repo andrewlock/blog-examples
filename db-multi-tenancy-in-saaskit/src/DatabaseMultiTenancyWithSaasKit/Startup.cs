@@ -58,7 +58,9 @@ namespace DatabaseMultiTenancyWithSaasKit
             }
 
             app.UseStaticFiles();
-
+            
+            app.UseMultitenancy<AppTenant>();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
