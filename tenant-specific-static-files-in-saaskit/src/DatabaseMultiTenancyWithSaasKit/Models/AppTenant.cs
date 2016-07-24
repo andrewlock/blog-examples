@@ -5,6 +5,6 @@ namespace DatabaseMultiTenancyWithSaasKit.Models
         public int AppTenantId { get; set; }
         public string Name { get; set; }
         public string Hostname { get; set; }
-        public string Tag { get; set; }
+        public string Folder { get; set; }
     }
 }

@@ -59,7 +59,7 @@ namespace DatabaseMultiTenancyWithSaasKit
 
             app.UseMultitenancy<AppTenant>();
 
-            app.UsePerTenantStaticFiles<AppTenant>("tenant", x => x.Tag);
+            app.UsePerTenantStaticFiles<AppTenant>("tenant", x => x.Folder);
 
             app.UseStaticFiles();
 
