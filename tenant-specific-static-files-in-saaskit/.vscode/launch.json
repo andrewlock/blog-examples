@@ -8,7 +8,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceRoot}/src/DatabaseMultiTenancyWithSaasKit/bin/Debug/netcoreapp1.0/DatabaseMultiTenancyWithSaasKit.dll",
             "args": [],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/src/DatabaseMultiTenancyWithSaasKit",
             "stopAtEntry": false,
             "launchBrowser": {
                 "enabled": true,

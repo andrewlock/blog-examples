@@ -7,6 +7,7 @@ using DatabaseMultiTenancyWithSaasKit.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -58,7 +59,9 @@ namespace DatabaseMultiTenancyWithSaasKit
 
             app.UseMultitenancy<AppTenant>();
 
-            app.UsePerTenantStaticFiles<AppTenant>(x => x.Tag, "/tenant");
+            app.UsePerTenantStaticFiles<AppTenant>("tenant", x => x.Tag);
+
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
