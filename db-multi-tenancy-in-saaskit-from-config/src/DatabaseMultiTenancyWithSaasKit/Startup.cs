@@ -7,6 +7,7 @@ using DatabaseMultiTenancyWithSaasKit.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -38,16 +39,7 @@ namespace DatabaseMultiTenancyWithSaasKit
                 opts => opts.UseNpgsql(connectionString)
             );
 
-            services.Configure<MultitenancyOptions>(
-                options =>
-                {
-                    var provider = services.BuildServiceProvider();
-                    using (var dbContext = provider.GetRequiredService<ApplicationDbContext>())
-                    {
-                        options.AppTenants = dbContext.AppTenants.ToList();
-                    }
-                });
-
+            services.AddSingleton<IConfigureOptions<MultitenancyOptions>, ConfigureMultitenancyOptions>();
             services.AddMultitenancy<AppTenant, AppTenantResolver>();
         }
 
