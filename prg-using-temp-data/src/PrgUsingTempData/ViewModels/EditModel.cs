@@ -10,7 +10,7 @@ namespace PrgUsingTempData.ViewModels
         [Required]
         public string LastName { get; set; }
 
-        [Required, EmailAddress]
+        [Required, EmailAddress, MinLength(20)]
         public string Email { get; set; }
     }
 }
