@@ -29,6 +29,8 @@ namespace PrgUsingTempData
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,7 @@ namespace PrgUsingTempData
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
