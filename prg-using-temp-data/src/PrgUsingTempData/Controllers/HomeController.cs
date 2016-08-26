@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PrgUsingTempData.AttributeFilters;
 using PrgUsingTempData.ViewModels;
 
 namespace PrgUsingTempData.Controllers
 {
     public class HomeController : Controller
     {
+        [ImportModelState]
         public IActionResult Index()
         {
             return View(new EditModel());
         }
 
         [HttpPost]
+        [ExportModelState]
         public IActionResult Index(EditModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Success));
         }
