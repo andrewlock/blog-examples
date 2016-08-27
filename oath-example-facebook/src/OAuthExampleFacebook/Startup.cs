@@ -41,7 +41,7 @@ namespace OAuthExampleFacebook
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -76,6 +76,14 @@ namespace OAuthExampleFacebook
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseFacebookAuthentication(new FacebookOptions
+            {
+                AppId = Configuration["facebook:appid"],
+                AppSecret = Configuration["facebook:appsecret"],
+                Scope = { "email" },
+                Fields = { "name", "email" },
+                SaveTokens = true,
+            });
 
             app.UseMvc(routes =>
             {
