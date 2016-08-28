@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{113C83E3-0BA2-42EA-97B7-AEC4E29305FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0BF2206B-0091-401C-8879-3C5525F0ADE9}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OpenidConnectExample", "src\OpenidConnectExample\OpenidConnectExample.xproj", "{49B68636-E309-41D6-B721-61D74E2F78FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49B68636-E309-41D6-B721-61D74E2F78FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B68636-E309-41D6-B721-61D74E2F78FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B68636-E309-41D6-B721-61D74E2F78FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B68636-E309-41D6-B721-61D74E2F78FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{49B68636-E309-41D6-B721-61D74E2F78FB} = {113C83E3-0BA2-42EA-97B7-AEC4E29305FB}
+	EndGlobalSection
+EndGlobal
