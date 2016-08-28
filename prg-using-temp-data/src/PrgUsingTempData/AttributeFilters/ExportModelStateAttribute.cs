@@ -22,26 +22,13 @@ namespace PrgUsingTempData.AttributeFilters
                     var controller = filterContext.Controller as Controller;
                     if (controller != null && filterContext.ModelState != null)
                     {
-                        controller.TempData[Key] = SerialiseModelState(filterContext.ModelState);
+                        var modelState = ModelStateHelpers.SerialiseModelState(filterContext.ModelState);
+                        controller.TempData[Key] = modelState;
                     }
                 }
             }
 
             base.OnActionExecuted(filterContext);
-        }
-
-        private static string SerialiseModelState(ModelStateDictionary modelState)
-        {
-            var errorList = modelState
-                .Select(kvp => new ModelStateValue
-                               {
-                                   Key = kvp.Key,
-                                   AttemptedValue = kvp.Value.AttemptedValue,
-                                   RawValue = kvp.Value.RawValue,
-                                   ErrorMessages = kvp.Value.Errors.Select(err => err.ErrorMessage).ToList(),
-                               });
-
-            return JsonConvert.SerializeObject(errorList);
         }
     }
 }

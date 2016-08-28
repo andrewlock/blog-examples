@@ -19,7 +19,7 @@ namespace PrgUsingTempData.AttributeFilters
                 //Only Import if we are viewing
                 if (filterContext.Result is ViewResult)
                 {
-                    var modelState = DeserialiseModelState(serialisedModelState);
+                    var modelState = ModelStateHelpers.DeserialiseModelState(serialisedModelState);
                     filterContext.ModelState.Merge(modelState);
                 }
                 else
@@ -30,22 +30,6 @@ namespace PrgUsingTempData.AttributeFilters
             }
 
             base.OnActionExecuted(filterContext);
-        }
-
-        private static ModelStateDictionary DeserialiseModelState(string serialisedErrorList)
-        {
-            var errorList = JsonConvert.DeserializeObject<List<ModelStateValue>>(serialisedErrorList);
-            var modelState = new ModelStateDictionary();
-
-            foreach (var item in errorList)
-            {
-                modelState.SetModelValue(item.Key, item.RawValue, item.AttemptedValue);
-                foreach (var error in item.ErrorMessages)
-                {
-                    modelState.AddModelError(item.Key, error);
-                }
-            }
-            return modelState;
         }
     }
 }
