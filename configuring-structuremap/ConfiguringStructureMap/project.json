@@ -13,7 +13,7 @@
     "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
-    "StructureMap.Dnx": "0.5.1-rc2-final"
+    "StructureMap.Microsoft.DependencyInjection": "1.0.1"
   },
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
