@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using OpenidConnectExample.Data;
 using OpenidConnectExample.Models;
 using OpenidConnectExample.Services;
@@ -73,6 +78,16 @@ namespace OpenidConnectExample
             app.UseStaticFiles();
 
             app.UseIdentity();
+            var options = new OpenIdConnectOptions
+            {
+                ClientId = Configuration["google:ClientId"],
+                ClientSecret = Configuration["google:ClientSecret"],
+                Authority = Configuration["google:authority"],
+                
+                ResponseType = OpenIdConnectResponseType.Code,
+                GetClaimsFromUserInfoEndpoint = true,
+            };
+            app.UseOpenIdConnectAuthentication(options);
 
             app.UseMvc(routes =>
             {
