@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebMarkupMin.AspNet.Common;
+using WebMarkupMin.AspNetCore1;
 
 namespace HtmlMinification
 {
@@ -29,6 +31,19 @@ namespace HtmlMinification
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddWebMarkupMin(options =>
+                                     {
+                                         options.AllowMinificationInDevelopmentEnvironment = true;
+                                         options.AllowCompressionInDevelopmentEnvironment = true;
+                                     })
+                .AddHtmlMinification(options =>
+                                     {
+                                         options.MinificationSettings.RemoveRedundantAttributes = true;
+                                         options.MinificationSettings.RemoveHttpProtocolFromAttributes = true;
+                                         options.MinificationSettings.RemoveHttpProtocolFromAttributes = true;
+                                     })
+                .AddHttpCompression();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +63,8 @@ namespace HtmlMinification
             }
 
             app.UseStaticFiles();
+
+            app.UseWebMarkupMin();
 
             app.UseMvc(routes =>
             {
