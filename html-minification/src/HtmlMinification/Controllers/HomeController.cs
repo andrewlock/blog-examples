@@ -12,6 +12,21 @@ namespace HtmlMinification.Controllers
         {
             return View();
         }
+    
+        public IActionResult Amazon()
+        {
+            return View();
+        }
+    
+        public IActionResult Xbox()
+        {
+            return View();
+        }
+    
+        public IActionResult Twitter()
+        {
+            return View();
+        }
 
         public IActionResult About()
         {
