@@ -1,0 +1,6 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@inject WebApplication.Services.ITestService TestService; 
+
+@TestService.GetImplementationName()
