@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AddingLocalization.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AddingLocalization.Controllers
@@ -10,7 +11,18 @@ namespace AddingLocalization.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Index(HomeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            ViewData["Result"] = "Success!";
+            return View(model);
         }
 
         public IActionResult About()

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace AddingLocalization
 {
@@ -27,8 +30,32 @@ namespace AddingLocalization
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddViewLocalization(opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(
+                opts =>
+                {
+                    var supportedCultures = new[]
+                    {
+                        new CultureInfo("en-AU"),
+                        new CultureInfo("en-GB"),
+                        new CultureInfo("en-US"),
+                        new CultureInfo("en"),
+                        new CultureInfo("fr-FR"),
+                        new CultureInfo("fr"),
+                    };
+
+                    opts.DefaultRequestCulture = new RequestCulture("en-GB");
+                    // Formatting numbers, dates, etc.
+                    opts.SupportedCultures = supportedCultures;
+                    // UI strings that we have localized.
+                    opts.SupportedUICultures = supportedCultures;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +75,9 @@ namespace AddingLocalization
             }
 
             app.UseStaticFiles();
+
+
+            app.UseRequestLocalization(app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseMvc(routes =>
             {
