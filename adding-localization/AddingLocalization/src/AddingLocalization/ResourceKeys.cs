@@ -4,9 +4,10 @@ using System.Linq;
 
 namespace AddingLocalization
 {
-    public static class Resources
+    public static class ResourceKeys
     {
         public const string Required = "Required";
         public const string NotAValidEmail = "NotAValidEmail";
+        public const string YourEmail = "YourEmail";
     }
 }
