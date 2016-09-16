@@ -41,7 +41,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - AddingLocalization</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2016 - Adding Localization</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    @await Html.PartialAsync("_SelectLanguagePartial")
+                </div>
+            </div>
         </footer>
     </div>
 
