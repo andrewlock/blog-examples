@@ -10,7 +10,7 @@ namespace AddingLocalization.ViewModels
     {
         [Required(ErrorMessage = ResourceKeys.Required)]
         [EmailAddress(ErrorMessage = ResourceKeys.NotAValidEmail)]
-        [Display(Name = ResourceKeys.YourEmail, ResourceType = typeof(Resources.ViewModels_HomeViewModel))]
+        [Display(Name = ResourceKeys.YourEmail)]
         public string Email { get; set; }
     }
 }
