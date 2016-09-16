@@ -11,7 +11,6 @@ namespace AddingLocalization.ViewModels
         [Required(ErrorMessage = "Required")]
         [EmailAddress(ErrorMessage = "The Email field is not a valid e-mail address")]
         [Display(Name = "Email")]
-        [MaxLength(10, ErrorMessage = "The Email must be 10 characters at most")]
         public string Email { get; set; }
     }
 }

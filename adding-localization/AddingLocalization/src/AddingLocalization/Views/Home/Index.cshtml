@@ -1,13 +1,16 @@
-﻿@model AddingLocalization.ViewModels.HomeViewModel
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Mvc.Localization
+@model AddingLocalization.ViewModels.HomeViewModel
+@inject IViewLocalizer L
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = L["Home Page"];
 }
-<h2>@ViewData["Result"]</h2>
+<h2>@ViewData["Title"]</h2>
 <div class="row">
     <div class="col-md-8">
         <section>
-            <form asp-controller="Home" asp-action="Index" method="post" class="form-horizontal">
-                <h4>View the errors.</h4>
+            <form asp-controller="Home" asp-action="Index" method="post" class="form-horizontal" novalidate>
+                <h4>@(ViewData["Result"] == null? "Enter details" : ViewData["Result"])</h4>
                 <hr />
                 <div class="form-group">
                     <label asp-for="Email" class="col-md-2 control-label"></label>
