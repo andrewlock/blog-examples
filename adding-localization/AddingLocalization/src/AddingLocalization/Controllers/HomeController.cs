@@ -6,11 +6,19 @@ using AddingLocalization.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace AddingLocalization.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IStringLocalizer<HomeController> _localizer;
+
+        public HomeController(IStringLocalizer<HomeController> localizer)
+        {
+            _localizer = localizer;
+        }
+
         public IActionResult Index()
         {
             return View(new HomeViewModel());
@@ -23,7 +31,7 @@ namespace AddingLocalization.Controllers
             {
                 return View(model);
             }
-            ViewData["Result"] = "Success!";
+            ViewData["Result"] = _localizer["Success!"];
             return View(model);
         }
 

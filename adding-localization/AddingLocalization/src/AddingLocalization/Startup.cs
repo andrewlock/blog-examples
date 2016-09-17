@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -34,7 +35,9 @@ namespace AddingLocalization
 
             // Add framework services.
             services.AddMvc()
-                .AddViewLocalization(opts => { opts.ResourcesPath = "Resources"; })
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts => { opts.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
 
             services.Configure<RequestLocalizationOptions>(

@@ -10,7 +10,7 @@ namespace AddingLocalization.ViewModels
     {
         [Required(ErrorMessage = "Required")]
         [EmailAddress(ErrorMessage = "The Email field is not a valid e-mail address")]
-        [Display(Name = "Email")]
+        [Display(Name = "Your Email")]
         public string Email { get; set; }
     }
 }
