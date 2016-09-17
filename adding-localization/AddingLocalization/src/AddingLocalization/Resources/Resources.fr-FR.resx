@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NotAValidEmail" xml:space="preserve">
-    <value>Le champ Email est pas une adresse e -mail valide</value>
+  <data name="ViewModels.HomeViewModel.Required" xml:space="preserve">
+    <value>Something else</value>
   </data>
-  <data name="Required" xml:space="preserve">
-    <value>Obligatoire</value>
-  </data>
-  <data name="YourEmail" xml:space="preserve">
-    <value>Votre Email</value>
+  <data name="ViewModels.HomeViewModel.YourEmail" xml:space="preserve">
+    <value>Ta da</value>
   </data>
 </root>
