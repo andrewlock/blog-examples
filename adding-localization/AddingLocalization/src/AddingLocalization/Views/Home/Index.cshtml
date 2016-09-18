@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @model AddingLocalization.ViewModels.HomeViewModel
-@inject IViewLocalizer L
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = L["Home Page"];
+    ViewData["Title"] = Localizer[ResourceKeys.HomePage];
 }
 <h2>@ViewData["Title"]</h2>
 <div class="row">
