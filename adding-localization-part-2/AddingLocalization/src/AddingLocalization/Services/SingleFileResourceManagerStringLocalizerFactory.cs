@@ -19,6 +19,7 @@ namespace AddingLocalization.Services
             new ConcurrentDictionary<string, SingleFileResourceManagerStringLocalizer>();
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly string _resourcesRelativePath;
+        //TODO: Move this hard coded string into LocalizationOptions
         private readonly string _fileName = "Resources";
 
         /// <summary>
