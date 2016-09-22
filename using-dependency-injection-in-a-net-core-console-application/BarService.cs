@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication
 {
-    public class BarService
+    public class BarService : IBarService
     {
         private readonly IFooService _fooService;
         public BarService(IFooService fooService)
