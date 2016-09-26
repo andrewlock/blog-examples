@@ -41,7 +41,7 @@ namespace HtmlMinification
                                      {
                                          options.MinificationSettings.RemoveRedundantAttributes = true;
                                          options.MinificationSettings.RemoveHttpProtocolFromAttributes = true;
-                                         options.MinificationSettings.RemoveHttpProtocolFromAttributes = true;
+                                         options.MinificationSettings.RemoveHttpsProtocolFromAttributes = true;
                                      })
                 .AddHttpCompression();
         }
