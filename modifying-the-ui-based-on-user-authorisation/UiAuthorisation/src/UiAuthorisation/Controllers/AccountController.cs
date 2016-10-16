@@ -46,6 +46,14 @@ namespace UiAuthorisation.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+        //
+        // GET: /Account/Login
+        [HttpGet]
+        public IActionResult AccessDenied(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
 
         //
         // POST: /Account/Login

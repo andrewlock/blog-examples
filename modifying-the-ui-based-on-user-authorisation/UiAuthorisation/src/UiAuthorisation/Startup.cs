@@ -49,6 +49,13 @@ namespace UiAuthorisation
 
             services.AddMvc();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(
+                    "CanAccessVIPArea",
+                    policyBuilder => policyBuilder.RequireClaim("VIPNumber", "1", "2"));
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
