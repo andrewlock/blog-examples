@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ObjectPool;
+using Microsoft.Extensions.Options;
 
 namespace injecting_services_when_creating_mvcoptions
 {
@@ -29,18 +30,9 @@ namespace injecting_services_when_creating_mvcoptions
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var sp = services.BuildServiceProvider();
-            var logger = sp.GetService<ILoggerFactory>();
-            var objectPoolProvider = sp.GetService<ObjectPoolProvider>();
-        
-            services
-                .AddMvc(options =>
-                    {
-                        options.UseHtmlEncodeJsonInputFormatter(logger.CreateLogger<MvcOptions>(), objectPoolProvider);
-                    });
-                    
             // Add framework services.
             services.AddMvc();
+            services.AddSingleton<IConfigureOptions<MvcOptions>, ConfigureMvcOptions>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
