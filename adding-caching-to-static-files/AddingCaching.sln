@@ -1,0 +1,32 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84AEAFB8-8394-4BAB-A3ED-C8323889CCD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C91BCD5D-0A56-4E87-82D2-B4545BF549E2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AddingCaching", "src\AddingCaching\AddingCaching.xproj", "{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0CEE70D-4B83-4039-AA8A-6BD0BE45FF54} = {84AEAFB8-8394-4BAB-A3ED-C8323889CCD4}
+	EndGlobalSection
+EndGlobal

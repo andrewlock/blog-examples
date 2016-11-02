@@ -1,0 +1,40 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "dotnet",
+    "options": {
+        // Make sure this points to the directory containing project.json
+        "cwd": "${workspaceRoot}/src/DatabaseMultiTenancyWithSaasKit"
+    },
+    "isShellCommand": true,
+    "showOutput": "always",
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "build",
+            "problemMatcher": "$msCompile",
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "bundle"
+        },
+        {
+            "taskName": "clean",
+            "args": [
+                "bundle",
+                "clean"
+            ],
+            "suppressTaskName": true
+        },
+        {
+            "taskName": "watch",
+            "args": [
+                "bundle",
+                "watch"
+            ],
+            "suppressTaskName": true,
+            "isWatching": true
+        }
+    ]
+}
