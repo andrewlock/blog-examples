@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 
 namespace WebApplication
 {
@@ -35,8 +37,21 @@ namespace WebApplication
             // Add framework services.
             services.AddMvc();
 
-            // options.RequestCultureProviders = new[] { new RouteDataRequestCultureProvider() { Options = options } };
+            var supportedCultures = new[]
+                               {
+            new CultureInfo("en-US"),
+            new CultureInfo("fr")
+        };
 
+            var options = new RequestLocalizationOptions()
+            {
+                DefaultRequestCulture = new RequestCulture(culture: "en-GB", uiCulture: "en-GB"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+            options.RequestCultureProviders = new[] { new RouteDataRequestCultureProvider() { Options = options } };
+
+            services.AddSingleton(options);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +59,9 @@ namespace WebApplication
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            var options = app.ApplicationServices.GetService<RequestLocalizationOptions>();
+            app.UseRequestLocalization(options);
 
             app.UseMvc(routes =>
             {
