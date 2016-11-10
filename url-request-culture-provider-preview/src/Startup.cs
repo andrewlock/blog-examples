@@ -38,10 +38,12 @@ namespace WebApplication
             services.AddMvc();
 
             var supportedCultures = new[]
-                               {
-            new CultureInfo("en-US"),
-            new CultureInfo("fr")
-        };
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("en-GB"),
+                new CultureInfo("de"),
+                new CultureInfo("fr-FR"),
+            };
 
             var options = new RequestLocalizationOptions()
             {

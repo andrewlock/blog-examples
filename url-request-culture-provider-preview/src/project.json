@@ -6,8 +6,8 @@
       "version": "1.1.0-preview1-001100-00",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.Mvc": "1.0.1",
-    "Microsoft.AspNetCore.Routing": "1.0.1",
+    "Microsoft.AspNetCore.Mvc": "1.1.0-preview1-final",
+    "Microsoft.AspNetCore.Routing": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
@@ -28,7 +28,7 @@
     "Microsoft.Extensions.SecretManager.Tools": {
       "version": "1.0.0-preview2-final",
       "imports": "portable-net45+win8+dnxcore50"
-    },
+    }
   },
 
   "frameworks": {
