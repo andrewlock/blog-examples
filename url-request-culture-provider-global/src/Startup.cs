@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication
 {
@@ -35,7 +36,10 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc(opts =>
+            {
+                opts.Filters.Add(new MiddlewareFilterAttribute(typeof(LocalizationPipeline)));
+            });
 
             var supportedCultures = new[]
             {
@@ -61,9 +65,6 @@ namespace WebApplication
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            var options = app.ApplicationServices.GetService<RequestLocalizationOptions>();
-            app.UseRequestLocalization(options);
 
             app.UseMvc(routes =>
             {
