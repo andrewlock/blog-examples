@@ -7,7 +7,7 @@ namespace WebApplication.Controllers
     {
         public string Index()
         {
-            return $"CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}";
+            return $"Home: CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}";
         }
     }
 }

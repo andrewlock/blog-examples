@@ -38,6 +38,7 @@ namespace WebApplication
             // Add framework services.
             services.AddMvc(opts =>
             {
+                opts.Conventions.Insert(0, new LocalizationConvention());
                 opts.Filters.Add(new MiddlewareFilterAttribute(typeof(LocalizationPipeline)));
             });
 
