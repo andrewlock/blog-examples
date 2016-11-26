@@ -9,7 +9,7 @@ namespace WebApplication
     {
         public void Apply(ApplicationModel application)
         {
-            var culturePrefix = new AttributeRouteModel(new RouteAttribute("{culture}"));
+            var culturePrefix = new AttributeRouteModel(new RouteAttribute("{culture:culturecode}"));
 
             foreach (var controller in application.Controllers)
             {

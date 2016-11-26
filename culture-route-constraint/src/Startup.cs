@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
 
 namespace WebApplication
 {
@@ -59,6 +61,8 @@ namespace WebApplication
             options.RequestCultureProviders = new[] { new RouteDataRequestCultureProvider() { Options = options } };
 
             services.AddSingleton(options);
+            services.Configure<RouteOptions>(opts =>
+                opts.ConstraintMap.Add("culturecode", typeof(CultureRouteConstraint)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +75,7 @@ namespace WebApplication
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{culture}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{culture:culturecode}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
