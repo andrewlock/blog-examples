@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace WebApplication
 {
@@ -66,7 +68,7 @@ namespace WebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, RequestLocalizationOptions localizationOptions)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -76,6 +78,15 @@ namespace WebApplication
                 routes.MapRoute(
                     name: "default",
                     template: "{culture:culturecode}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapGet("{culture:culturecode}/{*path}", ctx => { });
+                routes.MapGet("{*path}", (RequestDelegate)(ctx =>
+               {
+                   var cultureCode = localizationOptions.DefaultRequestCulture.Culture.Name;
+                   var path = ctx.GetRouteValue("path") ?? string.Empty;
+                   var culturedPath = $"/{cultureCode}/{path}";
+                   ctx.Response.Redirect(culturedPath);
+                   return Task.CompletedTask;
+               }));
             });
         }
     }
