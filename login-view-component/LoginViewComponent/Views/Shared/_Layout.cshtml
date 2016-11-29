@@ -34,7 +34,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
-                @await Component.InvokeAsync("LoginStatus")
+                <vc:login-status></vc:login-status>
             </div>
         </div>
     </div>
