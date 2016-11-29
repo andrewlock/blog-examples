@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoginViewComponent
 {
-    public class LoginViewViewComponent : ViewComponent
+    public class LoginStatusViewComponent : ViewComponent
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public LoginViewViewComponent(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public LoginStatusViewComponent(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -25,7 +25,7 @@ namespace LoginViewComponent
             }
             else
             {
-                return View("Anonymous");
+                return View();
             }
         }
     }
