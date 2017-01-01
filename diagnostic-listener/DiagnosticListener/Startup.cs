@@ -28,6 +28,7 @@ namespace DiagnosticListener
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMiddleware<DemoMiddleware>();
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
