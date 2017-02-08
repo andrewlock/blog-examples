@@ -46,7 +46,7 @@ namespace AddingLocalization
             services.Configure<RequestLocalizationOptions>(
                 opts =>
                 {
-                    var supportedCultures = new[]
+                    var supportedCultures = new List<CultureInfo>
                     {
                         new CultureInfo("en-AU"),
                         new CultureInfo("en-GB"),
