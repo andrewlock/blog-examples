@@ -10,26 +10,59 @@ namespace preventing_over_posting.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new UserModel());
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult Vulnerable(UserModel model)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return View("Index", model);
         }
 
-        public IActionResult Contact()
+        public IActionResult Safe1([Bind(nameof(UserModel.Name))] UserModel model)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return View("Index", model);
         }
 
-        public IActionResult Error()
+        public IActionResult Safe2(UserModelWithReadOnlyProperties model)
         {
-            return View();
+            //note this will error as wrong model type
+            return View("Index", model);
+        }
+
+        public IActionResult Safe3(BindingModel bindingModel)
+        {
+            var model = new UserModel();
+
+            // can be simplified using AutoMapper
+            model.Name = bindingModel.Name;
+            model.IsAdmin = false; // no IsAdmin property on bindingModel
+
+            return View("Index", model);
+        }
+
+        public IActionResult Safe4(BindingModel bindingModel)
+        {
+            var model = new DerivedUserModel();
+
+            // can be simplified using AutoMapper
+            model.Name = bindingModel.Name;
+            model.IsAdmin = false; // no IsAdmin property on bindingModel
+
+            //note this will error as wrong model type
+            return View("Index", model);
+        }
+
+        public IActionResult Safe5(DistinctBindingModel bindingModel)
+        {
+            var model = new DerivedUserModel();
+
+            // can be simplified using AutoMapper
+            model.Name = bindingModel.Name;
+            model.IsAdmin = false; // no IsAdmin property on bindingModel
+
+            //note this will error as wrong model type
+            return View("Index", model);
         }
     }
 }
