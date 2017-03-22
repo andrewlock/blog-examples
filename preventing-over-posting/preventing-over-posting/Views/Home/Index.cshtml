@@ -1,0 +1,22 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="Vulnerable" asp-Controller="Home">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" type="TextBox" asp-for="Name" />
+    </div>
+    <div class="form-group">
+        @if (Model.IsAdmin)
+            {
+            <i>You are an admin</i>
+        }
+        else
+        {
+            <i>You are a standard user</i>
+        }
+    </div>
+    <button class="btn btn-sm" type="submit">Submit</button>
+</form>
