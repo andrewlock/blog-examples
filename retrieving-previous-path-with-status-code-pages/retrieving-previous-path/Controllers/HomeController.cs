@@ -42,6 +42,7 @@ namespace RetrievingPreviousPath.Controllers
         {
             var feature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
             ViewData["ErrorUrl"] = feature?.OriginalPath;
+            ViewData["ErrorQuerystring"] = (feature as StatusCodeReExecuteFeature)?.OriginalQueryString;
 
             if (statusCode.HasValue)
             {
