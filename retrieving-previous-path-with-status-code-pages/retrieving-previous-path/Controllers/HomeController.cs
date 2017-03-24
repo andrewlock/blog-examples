@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Diagnostics;
 
-namespace preventing_over_posting.Controllers
+namespace RetrievingPreviousPath.Controllers
 {
     public class HomeController : Controller
     {
@@ -27,8 +28,28 @@ namespace preventing_over_posting.Controllers
             return View();
         }
 
-        public IActionResult Error()
+        public IActionResult Throw()
         {
+            throw new Exception("Oh noes! It seems to be broken!");
+        }
+
+        public IActionResult Problem()
+        {
+            return StatusCode(500);
+        }
+
+        public IActionResult Error(int? statusCode = null)
+        {
+            var feature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+            ViewData["ErrorUrl"] = feature?.OriginalPath;
+
+            if (statusCode.HasValue)
+            {
+                if (statusCode == 404 || statusCode == 500)
+                {
+                    return View(statusCode.ToString());
+                }
+            }
             return View();
         }
     }

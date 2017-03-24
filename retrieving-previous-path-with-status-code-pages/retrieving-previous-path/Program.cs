@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace preventing_over_posting
+namespace RetrievingPreviousPath
 {
     public class Program
     {
