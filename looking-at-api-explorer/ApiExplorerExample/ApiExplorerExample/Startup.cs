@@ -17,19 +17,7 @@ namespace ApiExplorerWebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ILoggerFactory, LoggerFactory>();
-            services.AddMvc(options =>
-            {
-                //options.Filters.AddService(typeof(ApiExplorerDataFilter));
-
-                options.Conventions.Add(new ApiExplorerVisibilityEnabledConvention());
-                options.Conventions.Add(new ApiExplorerVisibilityDisabledConvention(
-                    typeof(ApiExplorerVisbilityDisabledByConventionController)));
-
-                var jsonOutputFormatter = options.OutputFormatters.OfType<JsonOutputFormatter>().First();
-
-                options.OutputFormatters.Clear();
-                options.OutputFormatters.Add(jsonOutputFormatter);
-            });
+            services.AddMvc();
 
             services.AddSingleton<ApiExplorerDataFilter>();
         }
@@ -37,9 +25,11 @@ namespace ApiExplorerWebSite
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseStaticFiles();
+            app.UseDeveloperExceptionPage();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{controller}/{action}");
+                routes.MapRoute("default", "{controller=Documentation}/{action=Index}");
             });
         }
     }

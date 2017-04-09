@@ -3,22 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace ApiExplorerExample.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiExplorerSettings(IgnoreApi = false, GroupName =nameof(ValuesController))]
     public class ValuesController : Controller
     {
-        readonly IApiDescriptionGroupCollectionProvider _apiExplorer;
-        public ValuesController(IApiDescriptionGroupCollectionProvider apiExplorer)
+        // GET api/values
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            _apiExplorer = apiExplorer;
+            return new string[] { "value1", "value2" };
         }
 
-        [HttpGet("/")]
-        public IActionResult Index()
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View(_apiExplorer);
+            return "value";
+        }
+
+        // POST api/values
+        [HttpPost]
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
