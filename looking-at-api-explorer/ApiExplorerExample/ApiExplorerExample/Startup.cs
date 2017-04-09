@@ -19,7 +19,7 @@ namespace ApiExplorerWebSite
             services.AddTransient<ILoggerFactory, LoggerFactory>();
             services.AddMvc(options =>
             {
-                options.Filters.AddService(typeof(ApiExplorerDataFilter));
+                //options.Filters.AddService(typeof(ApiExplorerDataFilter));
 
                 options.Conventions.Add(new ApiExplorerVisibilityEnabledConvention());
                 options.Conventions.Add(new ApiExplorerVisibilityDisabledConvention(

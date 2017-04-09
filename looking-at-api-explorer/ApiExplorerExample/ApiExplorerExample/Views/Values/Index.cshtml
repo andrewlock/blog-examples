@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Mvc.ApiExplorer;
+@model IApiDescriptionGroupCollectionProvider
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="body">
+        <section class="featured">
+            <div class="content-wrapper">
+                <hgroup class="title">
+                    <h1>ASP.NET Web API Help Page</h1>
+                </hgroup>
+            </div>
+        </section>
+        <section class="content-wrapper main-content clear-fix">
+            <h3>API Groups, version @Model.ApiDescriptionGroups.Version</h3>
+            @foreach (var group in Model.ApiDescriptionGroups.Items)
+            {
+                <h4>@group.GroupName</h4>
+                <ul>
+                    @foreach (var api in group.Items)
+                    {
+                        <li>
+                            <h5>@api.GroupName @api.HttpMethod @api.RelativePath</h5>
+                            <blockquote>
+                                @if (api.ParameterDescriptions.Count > 0)
+                                {
+                                    <h6>Parameters</h6>
+                                    <dl>
+                                        @foreach (var parameter in api.ParameterDescriptions)
+                                        {
+                                            <dt>Name</dt>
+                                            <dd>@parameter.Name,  (@parameter.Source.Id)</dd>
+                                            <dt>Type</dt>
+                                            <dd>@parameter.Type?.FullName</dd>
+                                            @if (parameter.RouteInfo != null)
+                                            {
+                                                <dt>Constraints</dt>
+                                                <dd>@string.Join(",", parameter.RouteInfo.Constraints?.Select(c => c.GetType().Name).ToArray())</dd>
+                                                <dt>DefaultValue</dt>
+                                                <dd>@string.Join(",", parameter.RouteInfo.Constraints?.Select(c => c.GetType().Name).ToArray())</dd>
+                                                <dt>Is Optional</dt>
+                                                <dd>@parameter.RouteInfo.IsOptional</dd>
+                                            }
+                                        }
+                                    </dl>
+                                }
+                            </blockquote>
+                            <blockquote>
+                                <h6>Supported Response Types</h6>
+                                <dl>
+                                    @foreach (var response in api.SupportedResponseTypes)
+                                    {
+                                        <dt>Status Code</dt>
+                                        <dd>@response.StatusCode</dd>
+
+                                        <dt>Response Type</dt>
+                                        <dd>@response.Type?.FullName</dd>
+
+                                        @foreach (var responseFormat in response.ApiResponseFormats)
+                                        {
+                                            <dt>Formatter</dt>
+                                                <dd>@responseFormat.Formatter?.GetType().FullName</dd>
+                                                <dt>Mesia Type</dt>
+                                                <dd>@responseFormat.MediaType</dd>
+                                        }
+                                    }
+                                </dl>
+
+                            </blockquote>
+                        </li>
+                    }
+                </ul>
+            }
+        </section>
+    </div>
+</body>
+</html>
