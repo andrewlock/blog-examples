@@ -21,6 +21,7 @@ namespace AspNetCoreImageResizingService
       {
         try
         {
+
           Image<Rgba32> destinationImage = this.CropImage(sourceImage, sourceX, sourceY, sourceWidth, sourceHeight, destinationWidth, destinationHeight);
           Stream outputStream = new MemoryStream();
 
