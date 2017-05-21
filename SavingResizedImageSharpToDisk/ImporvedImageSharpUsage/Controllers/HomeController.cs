@@ -35,6 +35,17 @@ namespace ImporvedImageSharpUsage.Controllers
         public IActionResult ResizeImage(string url, int width, int height)
         {
             if (width < 0 || height < 0) { return BadRequest(); }
+            if (width == 0 && height == 0) { return BadRequest(); }
+
+            if (height == 0)
+            {
+                width = SanitizeSize(width);
+            }
+            else
+            {
+                width = 0;
+                height = SanitizeSize(height);
+            }
 
             var originalPath = PathString.FromUriComponent("/" + url);
             var fileInfo = _fileProvider.GetFileInfo(originalPath);
@@ -67,6 +78,13 @@ namespace ImporvedImageSharpUsage.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        private static int[] SupportedSizes = { 100, 480, 960, 1280 };
+        private int SanitizeSize(int value)
+        {
+            if (value >= 1280) { return 1280; }
+            return SupportedSizes.First(size => size >= value);
         }
     }
 }
