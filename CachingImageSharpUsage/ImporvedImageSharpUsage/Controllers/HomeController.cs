@@ -36,7 +36,19 @@ namespace ImporvedImageSharpUsage.Controllers
         [Route("/image/{*url}")]
         public async Task<IActionResult> ResizeImage(string url, int sourceX, int sourceY, int sourceWidth, int sourceHeight, int width, int height)
         {
-            if (sourceWidth <= 0 || sourceHeight <= 0 || width <= 0 || height <= 0) { return BadRequest(); }
+            if (sourceWidth <= 0 || sourceHeight <= 0) { return BadRequest(); }
+            if (width < 0 || height < 0) { return BadRequest(); }
+            if (width == 0 && height == 0) { return BadRequest(); }
+            if (height == 0)
+            {
+                width = SanitizeSize(width);
+            }
+            else
+            {
+                width = 0;
+                height = SanitizeSize(height);
+            }
+
             var imagePath = PathString.FromUriComponent("/" + url);
             (var isValid, var subPath) = ValidatePath(imagePath);
             if (!isValid) { return NotFound(); }
@@ -82,6 +94,14 @@ namespace ImporvedImageSharpUsage.Controllers
         {
             var isValid = Helpers.TryMatchPath(path, PathString.Empty, forDirectory: false, subpath: out PathString subPath);
             return (isValid, subPath);
+        }
+
+        private static int[] SupportedSizes = { 480, 960, 1280 };
+
+        private static int SanitizeSize(int value)
+        {
+            if (value >= 1280) { return 1280; }
+            return SupportedSizes.First(size => size >= value);
         }
     }
 }
