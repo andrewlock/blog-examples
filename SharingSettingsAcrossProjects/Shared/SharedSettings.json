@@ -1,0 +1,6 @@
+﻿{
+    "MySection": {
+        "SharedValue": "This value is shared across both apps",
+        "AppSpecificValue": "override me" 
+    } 
+}
