@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <VersionPrefix>0.12.3.5</VersionPrefix>
+    <VersionSuffix>test</VersionSuffix>
+    <Version>0.2.0-alpha</Version>
+    <PackageVersion>0.3.0-rc</PackageVersion>
+    <AssemblyVersion>1.2.3.4</AssemblyVersion>
+    <FileVersion>6.6.6.6</FileVersion>
+    <InformationalVersion>So many numbers!</InformationalVersion>
+  </PropertyGroup>
+
+</Project>
