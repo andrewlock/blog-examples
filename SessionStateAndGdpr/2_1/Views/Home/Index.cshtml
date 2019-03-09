@@ -1,0 +1,6 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>@Context.Session.GetString("actions")</div>

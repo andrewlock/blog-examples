@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionStateAndGdpr", "2_0\SessionStateAndGdpr.csproj", "{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionStateAndGdpr", "2_0\SessionStateAndGdpr.csproj", "{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionStateAndGdpr2_1", "2_1\SessionStateAndGdpr2_1.csproj", "{C31045D8-A3DF-4778-B975-0852EE30F26A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,23 @@ Global
 		{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}.Release|x64.Build.0 = Release|Any CPU
 		{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}.Release|x86.ActiveCfg = Release|Any CPU
 		{D39C52F0-ACC7-49BB-A45B-4AA8EE5D22AC}.Release|x86.Build.0 = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|x64.Build.0 = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Debug|x86.Build.0 = Debug|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|x64.ActiveCfg = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|x64.Build.0 = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|x86.ActiveCfg = Release|Any CPU
+		{C31045D8-A3DF-4778-B975-0852EE30F26A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {389407E8-E37B-4AEE-A845-E0366B4E21AC}
 	EndGlobalSection
 EndGlobal
