@@ -33,6 +33,7 @@ namespace StronglyTypedIdEfCore
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
+                    .UseStronglyTypedIdValueConverters()
                     .UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
@@ -42,6 +43,7 @@ namespace StronglyTypedIdEfCore
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddScoped<OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

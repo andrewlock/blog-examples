@@ -13,5 +13,7 @@ namespace StronglyTypedIdEfCore.Data
             : base(options)
         {
         }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }
