@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using CustomFeatureFilter.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.FeatureManagement;
 
 namespace CustomFeatureFilter
 {
@@ -45,6 +46,8 @@ namespace CustomFeatureFilter
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddFeatureManagement()
+                    .AddFeatureFilter<ClaimsFeatureFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
