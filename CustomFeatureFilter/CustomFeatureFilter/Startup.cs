@@ -47,7 +47,8 @@ namespace CustomFeatureFilter
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddFeatureManagement()
-                    .AddFeatureFilter<ClaimsFeatureFilter>();
+                    .AddFeatureFilter<ClaimsFeatureFilter>()
+                    .UseDisabledFeaturesHandler(new RedirectDisabledFeatureHandler());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

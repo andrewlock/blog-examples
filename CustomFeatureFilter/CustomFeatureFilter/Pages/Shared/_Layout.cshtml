@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject  Microsoft.FeatureManagement.IFeatureManager _featureManager; 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -35,6 +36,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <feature name="@FeatureFlags.Beta">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
+                            </li>
+                        </feature>
                     </ul>
                 </div>
             </div>
