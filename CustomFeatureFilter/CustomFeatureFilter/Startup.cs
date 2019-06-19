@@ -13,7 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using CustomFeatureFilter.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.FeatureManagement;
+using Microsoft.FeatureManagement.FeatureFilters;
 
 namespace CustomFeatureFilter
 {
@@ -46,8 +48,13 @@ namespace CustomFeatureFilter
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddSession();
+            services.AddHttpContextAccessor();
+            services.AddTransient<ISessionManager, SessionSessionManager>();
+
             services.AddFeatureManagement()
                     .AddFeatureFilter<ClaimsFeatureFilter>()
+                    .AddFeatureFilter<PercentageFilter>()
                     .UseDisabledFeaturesHandler(new RedirectDisabledFeatureHandler());
         }
 
@@ -71,6 +78,7 @@ namespace CustomFeatureFilter
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseMvc();
         }

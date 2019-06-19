@@ -9,22 +9,21 @@ namespace CustomFeatureFilter
     [FilterAlias("Claims")]
     public class ClaimsFeatureFilter : IFeatureFilter
     {
-        private readonly IHttpContextAccessor _httpContextAccesor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ClaimsFeatureFilter(IHttpContextAccessor httpContextAccesor)
+        public ClaimsFeatureFilter(IHttpContextAccessor httpContextAccessor)
         {
-            _httpContextAccesor = httpContextAccesor ?? throw new ArgumentNullException(nameof(httpContextAccesor));
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
 
         public bool Evaluate(FeatureFilterEvaluationContext context)
         {
             var settings = context.Parameters.Get<ClaimsFilterSettings>();
 
-            var user = _httpContextAccesor.HttpContext.User;
+            var user = _httpContextAccessor.HttpContext.User;
 
             return settings.RequiredClaims
                 .All(claimType => user.HasClaim(claim => claim.Type == claimType));
         }
     }
-        
 }

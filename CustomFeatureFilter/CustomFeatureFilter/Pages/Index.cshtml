@@ -1,16 +1,13 @@
 ﻿@page
 @model IndexModel
+@inject Microsoft.FeatureManagement.IFeatureManagerSnapshot FeatureManager
 @{
     ViewData["Title"] = "Home page";
 }
 
-<feature name="@FeatureFlags.Beta">
-    <div class="alert alert-primary" role="alert">
-        Congratulations - You're in the Beta test!
-    </div>
-</feature>
-
-<div class="text-center">
-    <h1 class="display-4">@Model.WelcomeMessage</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<ul>
+@for (var i = 0; i < 10; i++)
+{
+    <li>Flag is: @FeatureManager.IsEnabled(FeatureFlags.NewExperience)</li>
+}
+</ul>
