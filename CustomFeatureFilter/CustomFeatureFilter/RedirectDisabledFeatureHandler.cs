@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.FeatureManagement;
+using Microsoft.FeatureManagement.Mvc;
 
 namespace CustomFeatureFilter
 {

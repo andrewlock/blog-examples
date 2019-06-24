@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6f6665c-64b3-48c8-93c4-261804ddbdf7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="482">
+              <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+              <folding>
+                <marker date="1560982096379" expanded="true" signature="6:544" ph="..." />
+                <marker date="1560982096379" expanded="true" signature="575:2773" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="602:2771" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="661:724" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="947:1954" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="1033:1297" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="2142:2765" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="2189:2310" ph="{...}" />
+                <marker date="1560982096379" expanded="true" signature="2327:2581" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <marker date="1561395940177" expanded="true" signature="6:174" ph="..." />
+                <marker date="1561395940177" expanded="true" signature="205:509" ph="{...}" />
+                <marker date="1561395940177" expanded="true" signature="282:507" ph="{...}" />
+                <marker date="1561395940177" expanded="true" signature="393:501" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+              <folding>
+                <marker date="1561396228057" expanded="true" signature="6:202" ph="..." />
+                <marker date="1561396228057" expanded="true" signature="233:441" ph="{...}" />
+                <marker date="1561396228057" expanded="true" signature="317:439" ph="{...}" />
+                <marker date="1561396228057" expanded="true" signature="386:433" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" />
+        <option value="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-15" />
+    <option name="width" value="1950" />
+    <option name="height" value="2075" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.CustomFeatureFilter">
+    <configuration name="CustomFeatureFilter" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="CustomFeatureFilter" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomFeatureFilter: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6f6665c-64b3-48c8-93c4-261804ddbdf7" name="Default Changelist" comment="" />
+      <created>1561395669756</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561395669756</updated>
+      <workItem from="1561395673075" duration="1539000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1539000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" order="0" sideWeight="0.5007072" side_tool="true" weight="0.24949698" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Structure" order="3" sideWeight="0.5007072" side_tool="true" weight="0.24949698" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49899396" weight="0.32732317" />
+      <window_info anchor="bottom" id="Messages" order="1" />
+      <window_info anchor="bottom" id="NuGet" order="2" sideWeight="0.49899396" weight="0.32871014" />
+      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="4" weight="0.32956153" />
+      <window_info anchor="bottom" id="Errors In Solution" order="5" sideWeight="0.49966466" weight="0.32956153" />
+      <window_info anchor="bottom" id="REST Client" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32732317" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.501006" side_tool="true" type="SLIDING" weight="0.32956153" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Performance Profiler" order="10" />
+      <window_info anchor="bottom" id="Message" order="11" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="12" weight="0.32825485" />
+      <window_info anchor="bottom" id="Run" order="13" weight="0.32871014" />
+      <window_info anchor="bottom" id="Debug" order="14" weight="0.39889196" />
+      <window_info anchor="bottom" id="Cvs" order="15" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="16" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="17" weight="0.32956153" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" sideWeight="0.4992928" visible="true" weight="0.24932976" />
+      <window_info anchor="right" id="Unit Tests" order="2" weight="0.3344504" />
+      <window_info anchor="right" id="Version Control" order="3" weight="0.29644534" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+          <folding>
+            <marker date="1560982096379" expanded="true" signature="6:544" ph="..." />
+            <marker date="1560982096379" expanded="true" signature="575:2773" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="602:2771" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="661:724" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="947:1954" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="1033:1297" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="2142:2765" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="2189:2310" ph="{...}" />
+            <marker date="1560982096379" expanded="true" signature="2327:2581" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <marker date="1561395940177" expanded="true" signature="6:174" ph="..." />
+            <marker date="1561395940177" expanded="true" signature="205:509" ph="{...}" />
+            <marker date="1561395940177" expanded="true" signature="282:507" ph="{...}" />
+            <marker date="1561395940177" expanded="true" signature="393:501" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+          <folding>
+            <marker date="1561396228057" expanded="true" signature="6:202" ph="..." />
+            <marker date="1561396228057" expanded="true" signature="233:441" ph="{...}" />
+            <marker date="1561396228057" expanded="true" signature="317:439" ph="{...}" />
+            <marker date="1561396228057" expanded="true" signature="386:433" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
