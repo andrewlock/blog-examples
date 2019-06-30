@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6f6665c-64b3-48c8-93c4-261804ddbdf7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomFeatureFilter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomFeatureFilter/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFeatureFilter/Startup.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,22 +13,40 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+            <state relative-caret-position="299">
+              <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
               <folding>
-                <marker date="1560982096379" expanded="true" signature="6:544" ph="..." />
-                <marker date="1560982096379" expanded="true" signature="575:2773" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="602:2771" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="661:724" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="947:1954" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="1033:1297" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="2142:2765" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="2189:2310" ph="{...}" />
-                <marker date="1560982096379" expanded="true" signature="2327:2581" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="6:653" ph="..." />
+                <marker date="1561901089918" expanded="true" signature="684:3117" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="711:3115" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="770:833" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="1056:2268" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="1142:1406" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="2456:3109" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="2503:2624" ph="{...}" />
+                <marker date="1561901089918" expanded="true" signature="2641:2895" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/SessionSessionManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <marker date="1561409977076" expanded="true" signature="6:67" ph="..." />
+                <marker date="1561409977076" expanded="true" signature="98:1048" ph="{...}" />
+                <marker date="1561409977076" expanded="true" signature="157:1046" ph="{...}" />
+                <marker date="1561409977076" expanded="true" signature="302:370" ph="{...}" />
+                <marker date="1561409977076" expanded="true" signature="429:644" ph="{...}" />
+                <marker date="1561409977076" expanded="true" signature="710:1040" ph="{...}" />
+                <marker date="1561409977076" expanded="true" signature="869:974" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -38,12 +56,12 @@
         <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <marker date="1561395940177" expanded="true" signature="6:174" ph="..." />
-                <marker date="1561395940177" expanded="true" signature="205:509" ph="{...}" />
-                <marker date="1561395940177" expanded="true" signature="282:507" ph="{...}" />
-                <marker date="1561395940177" expanded="true" signature="393:501" ph="{...}" />
+                <marker date="1561409965319" expanded="true" signature="6:174" ph="..." />
+                <marker date="1561409965319" expanded="true" signature="205:509" ph="{...}" />
+                <marker date="1561409965319" expanded="true" signature="282:507" ph="{...}" />
+                <marker date="1561409965319" expanded="true" signature="393:501" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -53,22 +71,22 @@
         <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+              <caret line="6" column="38" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
               <folding>
-                <marker date="1561396228057" expanded="true" signature="6:202" ph="..." />
-                <marker date="1561396228057" expanded="true" signature="233:441" ph="{...}" />
-                <marker date="1561396228057" expanded="true" signature="317:439" ph="{...}" />
-                <marker date="1561396228057" expanded="true" signature="386:433" ph="{...}" />
+                <marker date="1561409965317" expanded="true" signature="6:202" ph="..." />
+                <marker date="1561409965317" expanded="true" signature="233:441" ph="{...}" />
+                <marker date="1561409965317" expanded="true" signature="317:439" ph="{...}" />
+                <marker date="1561409965317" expanded="true" signature="386:433" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -80,14 +98,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1D3BFC4-DD78-49F7-AD48-4C6D16962F80/9a/6b8337c7/FeatureManagementBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/SessionSessionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1D3BFC4-DD78-49F7-AD48-4C6D16962F80/93/c7fbc60c/IFeatureManagementBuilder.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs" />
         <option value="$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs" />
+        <option value="$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj" />
+        <option value="$PROJECT_DIR$/CustomFeatureFilter/Startup.cs" />
       </list>
     </option>
   </component>
@@ -110,6 +133,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -122,19 +147,11 @@
               <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
               <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
             </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="CustomFeatureFilter" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="FileSystemExplorer" />
-      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,11 +211,13 @@
       <option name="presentableId" value="Default" />
       <updated>1561395669756</updated>
       <workItem from="1561395673075" duration="1539000" />
+      <workItem from="1561409805158" duration="276000" />
+      <workItem from="1561900922659" duration="771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1539000" />
+    <option name="totallyTimeSpent" value="2586000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -211,7 +230,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5007072" side_tool="true" weight="0.24949698" />
       <window_info id="Image Layers" order="1" />
@@ -224,7 +242,7 @@
       <window_info anchor="bottom" id="Inspection Results" order="4" weight="0.32956153" />
       <window_info anchor="bottom" id="Errors In Solution" order="5" sideWeight="0.49966466" weight="0.32956153" />
       <window_info anchor="bottom" id="REST Client" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32732317" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32732317" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.501006" side_tool="true" type="SLIDING" weight="0.32956153" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Performance Profiler" order="10" />
@@ -236,7 +254,7 @@
       <window_info anchor="bottom" id="Inspection" order="16" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="17" weight="0.32956153" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" sideWeight="0.4992928" visible="true" weight="0.24932976" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" sideWeight="0.4992928" visible="true" weight="0.25603217" />
       <window_info anchor="right" id="Unit Tests" order="2" weight="0.3344504" />
       <window_info anchor="right" id="Version Control" order="3" weight="0.29644534" />
       <window_info anchor="right" id="Database" order="4" />
@@ -257,33 +275,15 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
-          <folding>
-            <marker date="1560982096379" expanded="true" signature="6:544" ph="..." />
-            <marker date="1560982096379" expanded="true" signature="575:2773" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="602:2771" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="661:724" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="947:1954" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="1033:1297" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="2142:2765" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="2189:2310" ph="{...}" />
-            <marker date="1560982096379" expanded="true" signature="2327:2581" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/RedirectDisabledFeatureHandler.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
-            <marker date="1561395940177" expanded="true" signature="6:174" ph="..." />
-            <marker date="1561395940177" expanded="true" signature="205:509" ph="{...}" />
-            <marker date="1561395940177" expanded="true" signature="282:507" ph="{...}" />
-            <marker date="1561395940177" expanded="true" signature="393:501" ph="{...}" />
+            <marker date="1561409965319" expanded="true" signature="6:174" ph="..." />
+            <marker date="1561409965319" expanded="true" signature="205:509" ph="{...}" />
+            <marker date="1561409965319" expanded="true" signature="282:507" ph="{...}" />
+            <marker date="1561409965319" expanded="true" signature="393:501" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -291,20 +291,68 @@
     <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Controllers/BetaController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+          <caret line="6" column="38" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
           <folding>
-            <marker date="1561396228057" expanded="true" signature="6:202" ph="..." />
-            <marker date="1561396228057" expanded="true" signature="233:441" ph="{...}" />
-            <marker date="1561396228057" expanded="true" signature="317:439" ph="{...}" />
-            <marker date="1561396228057" expanded="true" signature="386:433" ph="{...}" />
+            <marker date="1561409965317" expanded="true" signature="6:202" ph="..." />
+            <marker date="1561409965317" expanded="true" signature="233:441" ph="{...}" />
+            <marker date="1561409965317" expanded="true" signature="317:439" ph="{...}" />
+            <marker date="1561409965317" expanded="true" signature="386:433" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/CustomFeatureFilter.csproj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1D3BFC4-DD78-49F7-AD48-4C6D16962F80/9a/6b8337c7/FeatureManagementBuilder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1D3BFC4-DD78-49F7-AD48-4C6D16962F80/93/c7fbc60c/IFeatureManagementBuilder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/SessionSessionManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <marker date="1561409977076" expanded="true" signature="6:67" ph="..." />
+            <marker date="1561409977076" expanded="true" signature="98:1048" ph="{...}" />
+            <marker date="1561409977076" expanded="true" signature="157:1046" ph="{...}" />
+            <marker date="1561409977076" expanded="true" signature="302:370" ph="{...}" />
+            <marker date="1561409977076" expanded="true" signature="429:644" ph="{...}" />
+            <marker date="1561409977076" expanded="true" signature="710:1040" ph="{...}" />
+            <marker date="1561409977076" expanded="true" signature="869:974" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomFeatureFilter/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <marker date="1561901089918" expanded="true" signature="6:653" ph="..." />
+            <marker date="1561901089918" expanded="true" signature="684:3117" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="711:3115" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="770:833" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="1056:2268" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="1142:1406" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="2456:3109" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="2503:2624" ph="{...}" />
+            <marker date="1561901089918" expanded="true" signature="2641:2895" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

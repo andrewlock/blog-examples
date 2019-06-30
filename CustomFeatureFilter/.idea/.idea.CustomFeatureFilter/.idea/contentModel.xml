@@ -56,6 +56,7 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="RedirectDisabledFeatureHandler.cs" t="Include" />
+        <e p="SessionSessionManager.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
           <e p="Beta" t="Include">

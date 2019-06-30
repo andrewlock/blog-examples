@@ -50,11 +50,11 @@ namespace CustomFeatureFilter
 
             services.AddSession();
             services.AddHttpContextAccessor();
-            services.AddTransient<ISessionManager, SessionSessionManager>();
 
             services.AddFeatureManagement()
                     .AddFeatureFilter<ClaimsFeatureFilter>()
                     .AddFeatureFilter<PercentageFilter>()
+                    .AddSessionManager<SessionSessionManager>()
                     .UseDisabledFeaturesHandler(new RedirectDisabledFeatureHandler());
         }
 
