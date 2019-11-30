@@ -1,0 +1,47 @@
+test-app-api:
+  replicaCount: 1
+
+  image:
+    repository: andrewlock/my-test-api
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  service:
+    type: ClusterIP
+    port: 80
+
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+    hosts:
+      - host: "chart-example.local"
+        paths: 
+        - "/my-test-app"
+
+  autoscaling:
+    enabled: false
+
+  serviceAccount:
+    create: false
+
+test-app-service:
+  replicaCount: 1
+
+  image:
+    repository: andrewlock/my-test-service
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  service:
+    type: ClusterIP
+    port: 80
+
+  ingress:
+    enabled: false
+
+  autoscaling:
+    enabled: false
+
+  serviceAccount:
+    create: false
