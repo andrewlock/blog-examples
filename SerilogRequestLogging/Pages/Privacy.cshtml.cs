@@ -19,6 +19,7 @@ namespace SerilogRequestLogging.Pages
 
         public void OnGet()
         {
+            throw new Exception("Test Exception as an example");
         }
     }
 }

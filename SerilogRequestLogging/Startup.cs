@@ -44,7 +44,8 @@ namespace SerilogRequestLogging
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSerilogRequestLogging();
+            app.UseSerilogRequestLogging(opts
+                => opts.EnrichDiagnosticContext = LogHelper.EnrichFromRequest);
 
             app.UseRouting();
 
