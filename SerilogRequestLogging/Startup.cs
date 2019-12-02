@@ -26,6 +26,7 @@ namespace SerilogRequestLogging
         {
             services.AddControllers(opts =>
             {
+                opts.Filters.Add<SerilogLoggingPageFilter>();
                 opts.Filters.Add<SerilogLoggingActionFilter>();
             });
             services.AddRazorPages();
