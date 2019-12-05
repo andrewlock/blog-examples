@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
 
 namespace SerilogRequestLogging
 {
@@ -30,6 +31,7 @@ namespace SerilogRequestLogging
                 opts.Filters.Add<SerilogLoggingActionFilter>();
             });
             services.AddRazorPages();
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +51,10 @@ namespace SerilogRequestLogging
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSerilogRequestLogging(opts
-                => opts.EnrichDiagnosticContext = LogHelper.EnrichFromRequest);
+            app.UseSerilogRequestLogging(opts => {
+                opts.EnrichDiagnosticContext = LogHelper.EnrichFromRequest;
+                opts.GetLevel = LogHelper.GetLevel(LogEventLevel.Verbose, "Health checks");
+            });
 
             app.UseRouting();
 
@@ -58,6 +62,8 @@ namespace SerilogRequestLogging
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/Healthz");
+                endpoints.MapHealthChecks("/Ready").WithDisplayName("Not a health check");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
