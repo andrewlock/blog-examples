@@ -6,18 +6,17 @@ namespace InspectMiddleware
 {
     public class ConditionalMiddlewareStartupFilter : IStartupFilter
     {
-        private readonly string _runAfterMiddlewareName;
-
-        public ConditionalMiddlewareStartupFilter(string runAfterMiddlewareName)
+        private readonly string _runBefore;
+        public ConditionalMiddlewareStartupFilter(string runBefore)
         {
-            _runAfterMiddlewareName = runAfterMiddlewareName;
+            _runBefore = runBefore;
         }
 
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
         {
             return builder =>
             {
-                var wrappedBuilder = new ConditionalMiddlewareBuilder(builder, _runAfterMiddlewareName);
+                var wrappedBuilder = new ConditionalMiddlewareBuilder(builder, _runBefore);
                 next(wrappedBuilder);
             };
         }

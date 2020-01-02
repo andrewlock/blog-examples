@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace InspectMiddleware
 {
@@ -24,7 +25,7 @@ namespace InspectMiddleware
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddConditionalMiddlewareAfterRouting();
+            services.AddConditionalMiddlewareBeforeEndpoints();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,11 @@ namespace InspectMiddleware
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.Use(async (context, next) =>
+            {
+                context.RequestServices.GetRequiredService<ILogger<Startup>>().LogInformation("Ran UseRouting()");
+                await next.Invoke();
+            });
 
             app.UseAuthorization();
 

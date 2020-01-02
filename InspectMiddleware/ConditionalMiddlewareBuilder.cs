@@ -9,10 +9,10 @@ namespace InspectMiddleware
     // based on https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/MiddlewareAnalysis/src/AnalysisBuilder.cs
     internal class ConditionalMiddlewareBuilder : IApplicationBuilder
     {
-        private readonly string _runAfterMiddlewareTypeName;
-        public ConditionalMiddlewareBuilder(IApplicationBuilder inner, string runAfterMiddlewareTypeName)
+        private readonly string _runBefore;
+        public ConditionalMiddlewareBuilder(IApplicationBuilder inner, string runBefore)
         {
-            _runAfterMiddlewareTypeName = runAfterMiddlewareTypeName;
+            _runBefore = runBefore;
             InnerBuilder = inner;
         }
 
@@ -27,18 +27,13 @@ namespace InspectMiddleware
         public IDictionary<string, object> Properties => InnerBuilder.Properties;
         public IFeatureCollection ServerFeatures => InnerBuilder.ServerFeatures;
         public RequestDelegate Build() => InnerBuilder.Build();
-
-        public IApplicationBuilder New()
-        {
-            throw new NotImplementedException();
-        }
+        public IApplicationBuilder New() => throw new NotImplementedException();
 
         public IApplicationBuilder Use(Func<RequestDelegate, RequestDelegate> middleware)
         {
             return InnerBuilder
-                .UseMiddleware<NameCheckerMiddleware>()
-                .Use(middleware)
-                .UseMiddleware<ConditionalMiddleware>(_runAfterMiddlewareTypeName);
+                .UseMiddleware<ConditionalMiddleware>(_runBefore)
+                .Use(middleware);
         }
     }
 

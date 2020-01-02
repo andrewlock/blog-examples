@@ -9,30 +9,26 @@ namespace InspectMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ConditionalMiddleware> _logger;
-        private readonly string _runAfterMiddlewareTypeName;
+        private readonly string _runBefore;
+        private readonly bool _runMiddleware;
 
-        public ConditionalMiddleware(RequestDelegate next, ILogger<ConditionalMiddleware> logger, string runAfterMiddlewareName)
+        public ConditionalMiddleware(RequestDelegate next, ILogger<ConditionalMiddleware> logger, string runBefore)
         {
-            _runAfterMiddlewareTypeName = runAfterMiddlewareName;
+            _runMiddleware = next.Target.GetType().FullName == runBefore;
+
             _next = next;
             _logger = logger;
+            _runBefore = runBefore;
         }
 
         public async Task Invoke(HttpContext httpContext)
         {
-            if(IsCorrectMiddleware(httpContext, _runAfterMiddlewareTypeName))
+            if (_runMiddleware)
             {
-                _logger.LogInformation("Running conditional middleware after {PreviousMiddleware}", _runAfterMiddlewareTypeName);
+                _logger.LogInformation("Running conditional middleware before {NextMiddleware}", _runBefore);
             }
 
             await _next(httpContext);
-        }
-
-        static bool IsCorrectMiddleware(HttpContext httpContext, string requiredMiddleware)
-        {
-            return httpContext.Items.TryGetValue(NameCheckerMiddleware.WrappedMiddlewareKey, out var wrappedMiddlewareName)
-                && wrappedMiddlewareName is string name 
-                && string.Equals(name, requiredMiddleware, StringComparison.Ordinal);
         }
     }
 }
