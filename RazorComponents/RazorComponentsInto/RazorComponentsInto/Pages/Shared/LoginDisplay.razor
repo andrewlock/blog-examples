@@ -1,0 +1,24 @@
+﻿<CascadingAuthenticationState>
+    <ul class="navbar-nav">
+        <AuthorizeView>
+            <Authorized>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline" method="post" action="/Identity/Account/LogOut?returnUrl=/">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Log out</button>
+                    </form>
+                </li>
+            </Authorized>
+            <NotAuthorized>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/Identity/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/Identity/Account/Login">Log in</a>
+                </li>
+            </NotAuthorized>
+        </AuthorizeView>
+    </ul>
+</CascadingAuthenticationState>
