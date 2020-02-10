@@ -10,16 +10,14 @@ namespace AjaxRazorComponent.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty] public string Greeting { get; set; }
+        public string Message { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public void OnGet() { }
+
+        public void OnPost()
         {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
+            Message = Greeting;
         }
     }
 }

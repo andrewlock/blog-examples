@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - AjaxRazorComponent</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <base href="~/" />
 </head>
 <body>
     <header>
@@ -44,6 +45,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="_framework/blazor.server.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
