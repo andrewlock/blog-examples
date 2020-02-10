@@ -1,0 +1,52 @@
+﻿<div class="form-row">
+    <div class="col">
+        <select @onchange="CountrySelectionChanged" name="@CountryFieldName" class="form-control">
+            <option></option>
+            @foreach (var country in Countries)
+            {
+                <option selected="@(country==SelectedCountry)" value="@country">@country</option>
+            }
+        </select>
+    </div>
+    <div class="col">
+        @if (!string.IsNullOrEmpty(SelectedCountry))
+        {
+            <select name="@StateFieldName" class="form-control">
+                <option></option>
+                @foreach (var state in States[SelectedCountry])
+                {
+                    <option selected="@(state==SelectedState)" value="@state">@state</option>
+                }
+            </select>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public string CountryFieldName { get; set; }
+    [Parameter] public string SelectedCountry { get; set; }
+    [Parameter] public string StateFieldName { get; set; }
+    [Parameter] public string SelectedState { get; set; }
+
+    private static readonly List<string> Countries = new List<string> {"United Kingdom", "USA" };
+    private static readonly Dictionary<string, List<string>> States = new Dictionary<string, List<string>>
+    {
+        {"United Kingdom", new List<string>{"Devon", "Cornwall", "Somerset" } },
+        {"USA", new List<string>{"New York", "Texas" } },
+    };
+
+    public void CountrySelectionChanged(ChangeEventArgs args)
+    {
+        var country = args.Value as string;
+
+        if (!string.IsNullOrEmpty(country) && Countries.Contains(country))
+        {
+            SelectedCountry = country;
+        }
+        else
+        {
+            SelectedCountry = null;
+        }
+    }
+}

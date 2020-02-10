@@ -11,6 +11,7 @@
 </div>
 }
 
+
 <div class="row">
     <div class="col-md-4">
         <form asp-page="/Index" method="post">
@@ -20,6 +21,18 @@
                 <input asp-for="Greeting" class="form-control" />
                 <span asp-validation-for="Greeting" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <component type="typeof(CountryDropdown)"
+                           render-mode="ServerPrerendered"
+                           param-CountryFieldName="Html.NameFor(x=>x.Country)"
+                           param-SelectedCountry="Model.Country"
+                           param-StateFieldName="Html.NameFor(x=>x.State)"
+                           param-SelectedState="Model.State" />
+
+                <span asp-validation-for="Country" class="text-danger"></span>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
 
             <button id="registerSubmit" type="submit" class="btn btn-primary">Send value</button>
         </form>
@@ -28,3 +41,6 @@
 </div>
 
     
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
