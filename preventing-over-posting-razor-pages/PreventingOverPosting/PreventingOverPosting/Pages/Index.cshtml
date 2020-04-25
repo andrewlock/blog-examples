@@ -1,0 +1,12 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<ul>
+    <li><a asp-page="Vulnerable" asp-route-id="1">Vulnerable</a></li>
+    <li><a asp-page="Safe" asp-route-id="1">Safe</a></li>
+    <li><a asp-page="Authorized" asp-route-id="1">Authorized (allowed)</a></li>
+    <li><a asp-page="Authorized" asp-route-id="2">Authorized (forbidden)</a></li>
+</ul>

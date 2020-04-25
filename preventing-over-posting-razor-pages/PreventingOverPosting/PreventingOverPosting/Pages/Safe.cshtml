@@ -1,0 +1,24 @@
+﻿@page "{id}"
+@model PreventingOverPosting.Pages.SafeModel
+@{
+    ViewData["Title"] = "Safe";
+}
+
+<h2>
+    Edit user
+    @if (Model.CurrentUser.IsAdmin)
+    {
+        <span class="badge badge-primary">Admin</span>
+    }
+</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.Name"></label>
+        <input asp-for="Input.Name" class="form-control" />
+        <span asp-validation-for="Input.Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
