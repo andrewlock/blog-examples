@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProblemDetailsHandling.Controllers
 {
+    [ApiController]
     [Route("[controller]")]
     public class ValuesController : ControllerBase
     {
@@ -36,6 +37,12 @@ namespace ProblemDetailsHandling.Controllers
         {
             return Forbid();
         }
+        
+        [HttpGet("404")]
+        public ActionResult Error404()
+        {
+            return NotFound("The result was not found");
+        }
 
         [HttpGet("500")]
         public StatusCodeResult Error500()
@@ -45,6 +52,12 @@ namespace ProblemDetailsHandling.Controllers
         
         [HttpGet("500/throw")]
         public StatusCodeResult Error500Throw()
+        {
+            throw new Exception();
+        }
+        
+        [HttpPost("405")] // call with a get
+        public StatusCodeResult Error405()
         {
             throw new Exception();
         }
