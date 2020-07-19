@@ -1,29 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.Extensions.DependencyInjection;
 
 using Microsoft.AspNetCore.Routing;
 using ImpromptuInterface;
-using System.Collections;
 using System.Linq;
-using Microsoft.Extensions.Options;
 
 namespace CustomGraphWriter
 {
-    public class CustomDfaGraphWriter
+    public class DuplicateEndpointDetector
     {
         private readonly IServiceProvider _services;
-        private readonly GraphDisplayOptions _options;
 
-        public CustomDfaGraphWriter(IServiceProvider services, GraphDisplayOptions options)
+        public DuplicateEndpointDetector(IServiceProvider services)
         {
             _services = services;
-            _options = options;
         }
 
-        public void Write(EndpointDataSource dataSource, TextWriter writer)
+        public Dictionary<string, List<string>> GetDuplicateEndpoints(EndpointDataSource dataSource)
         {
             // get the DfaMatcherBuilder - internal, so needs reflection :(
             Type matcherBuilder = typeof(IEndpointSelectorPolicy).Assembly
@@ -43,15 +38,16 @@ namespace CustomGraphWriter
 
             // Assign each node a sequential index.
             var visited = new Dictionary<IDfaNode, int>();
+            var duplicates = new Dictionary<string, List<string>>();
 
             var rawTree = builder.BuildDfaTree(includeLabel: true);
             IDfaNode tree = rawTree.ActLike<IDfaNode>();
 
-            writer.WriteLine("digraph DFA {");
-            Visit(tree, WriteNode);
-            writer.WriteLine("}");
+            Visit(tree, LogDuplicates);
 
-            void WriteNode(IDfaNode node)
+            return duplicates;
+
+            void LogDuplicates(IDfaNode node)
             {
                 if (!visited.TryGetValue(node, out var label))
                 {
@@ -62,48 +58,12 @@ namespace CustomGraphWriter
                 // We can safely index into visited because this is a post-order traversal,
                 // all of the children of this node are already in the dictionary.
 
-                if (node.Literals != null)
+                var matchCount = node?.Matches?.Count ?? 0;
+                if(matchCount > 1)
                 {
-                    foreach (DictionaryEntry dictEntry in node.Literals)
-                    {
-                        var edgeLabel = (string)dictEntry.Key;
-                        IDfaNode value = dictEntry.Value.ActLike<IDfaNode>();
-                        int nodelLabel = visited[value];
-                        writer.WriteLine($"{label} -> {nodelLabel} [label=\"/{edgeLabel}\" {_options.LiteralEdge}]");
-                    }
+                    var duplicateEndpoints = node.Matches.Select(x => x.DisplayName).ToList();
+                    duplicates[node.Label] = duplicateEndpoints;
                 }
-
-                if (node.Parameters != null)
-                {
-                    IDfaNode parameters = node.Parameters.ActLike<IDfaNode>();
-                    writer.WriteLine($"{label} -> {visited[parameters]} [label=\"/*\" {_options.ParametersEdge}]");
-                }
-
-                if (node.CatchAll != null && node.Parameters != node.CatchAll)
-                {
-                    IDfaNode catchAll = node.CatchAll.ActLike<IDfaNode>();
-                    int nodeLabel = visited[catchAll];
-                    writer.WriteLine($"{label} -> {nodeLabel} [label=\"/**\" {_options.CatchAllEdge}]");
-                }
-
-                if (node.PolicyEdges != null)
-                {
-                    foreach (DictionaryEntry dictEntry in node.PolicyEdges)
-                    {
-                        var edgeLabel = (object)dictEntry.Key;
-                        IDfaNode value = dictEntry.Value.ActLike<IDfaNode>();
-                        int nodeLabel = visited[value];
-                        writer.WriteLine($"{label} -> {nodeLabel} [label=\"{edgeLabel}\" {_options.PolicyEdge}]");
-                    }
-                }
-
-                var extras = node?.Matches?.Count switch
-                {
-                    int x when x > 1 => _options.AmbiguousMatchingNode,
-                    1 => _options.MatchingNode,
-                    _ => _options.DefaultNode,
-                };
-                writer.WriteLine($"{label} [label=\"{node.Label}\" {extras}]");
             }
         }
 

@@ -27,9 +27,14 @@ namespace CustomGraphWriter
         public string PolicyEdge { get; set; } = "color=\"red\" style=dashed arrowhead=open";
 
         /// <summary>
-        /// Additional display options for node which contains matches
+        /// Additional display options for node which contains a match
         /// </summary>
         public string MatchingNode { get; set; } = "shape=box style=filled color=\"brown\" fontcolor=\"white\"";
+        
+        /// <summary>
+        /// Additional display options for node which contains multiple matches
+        /// </summary>
+        public string AmbiguousMatchingNode { get; set; } = "shape=diamond style=filled color=\"blue\" fontcolor=\"white\"";
 
         /// <summary>
         /// Additional display options for node without matches
