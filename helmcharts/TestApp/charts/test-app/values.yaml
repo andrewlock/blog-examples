@@ -1,10 +1,15 @@
-test-app-api:
-
+# global values
+global:
   env: 
     "ASPNETCORE_ENVIRONMENT": "Staging"
     "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
 
+test-app-api:
+
   replicaCount: 1
+
+  env: 
+    "ASPNETCORE_ENVIRONMENT": "Development"
 
   image:
     repository: andrewlock/my-test-api
@@ -31,9 +36,6 @@ test-app-api:
     create: false
 
 test-app-service:
-  env: 
-    "ASPNETCORE_ENVIRONMENT": "Staging"
-    "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
 
   replicaCount: 1
 
