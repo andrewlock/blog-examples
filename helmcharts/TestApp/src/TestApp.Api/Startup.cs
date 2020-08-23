@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,8 @@ namespace TestApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHealthChecks()
+                .AddCheck<RandomHealthCheck>("Random check");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +47,9 @@ namespace TestApp.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", _ => Task.CompletedTask);
+                endpoints.MapHealthChecks("/health/startup");
+                endpoints.MapHealthChecks("/healthz", new HealthCheckOptions { Predicate = _ => false });
+                endpoints.MapHealthChecks("/ready", new HealthCheckOptions { Predicate = _ => false });
                 endpoints.MapControllers();
             });
         }
