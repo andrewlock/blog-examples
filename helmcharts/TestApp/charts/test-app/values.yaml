@@ -4,6 +4,17 @@ global:
     "ASPNETCORE_ENVIRONMENT": "Staging"
     "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
 
+test-app-cli:
+
+  image:
+    repository: andrewlock/my-test-cli
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  job:
+    ## Should the job be rescheduled on the same node if it fails, or just stopped
+    restartPolicy: Never
+
 test-app-api:
 
   replicaCount: 1

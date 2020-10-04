@@ -8,5 +8,6 @@ if [ -z "$*" ]; then
     exit 1;
 fi
 
+docker build -f TestApp.Cli.Dockerfile . -t andrewlock/my-test-cli:$1
 docker build -f TestApp.Api.Dockerfile . -t andrewlock/my-test-api:$1
 docker build -f TestApp.Service.Dockerfile . -t andrewlock/my-test-service:$1

@@ -27,6 +27,13 @@ spec:
       serviceAccountName: {{ include "test-app-api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: "{{ .Chart.Name }}-init"
+        image: "groundnuty/k8s-wait-for:1.3"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: 
+        - "job"
+        - "{{ .Release.Name }}-test-app-cli-{{ .Release.Revision}}"
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
