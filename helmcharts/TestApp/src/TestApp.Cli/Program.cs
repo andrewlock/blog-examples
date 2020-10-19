@@ -7,8 +7,16 @@ namespace TestApp.Cli
     {
         static void Main(string[] args)
         {
-            Thread.Sleep(30_000);
-            Console.WriteLine("Hello World!");
+            if(args.Length > 0 && args[0] == "say-hello")
+            {
+                Console.WriteLine("Hello world!");
+            }
+            else
+            {
+                Console.WriteLine("Running migrations...");
+                Thread.Sleep(30_000);
+                Console.WriteLine("Mmigrations complete!");
+            }
         }
     }
 }

@@ -15,6 +15,16 @@ test-app-cli:
     ## Should the job be rescheduled on the same node if it fails, or just stopped
     restartPolicy: Never
 
+test-app-cli-exec-host:
+
+  image:
+    repository: andrewlock/my-test-cli-exec-host
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  serviceAccount:
+    create: false
+
 test-app-api:
 
   replicaCount: 1
