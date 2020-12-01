@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzWorkerService", "QuartzWorkerService\QuartzWorkerService.csproj", "{6152E969-1CDD-43B5-ACF0-13C8B78EE263}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6152E969-1CDD-43B5-ACF0-13C8B78EE263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6152E969-1CDD-43B5-ACF0-13C8B78EE263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6152E969-1CDD-43B5-ACF0-13C8B78EE263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6152E969-1CDD-43B5-ACF0-13C8B78EE263}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C09B79D6-1612-4CBA-B92D-A64ED6B862BF}
+	EndGlobalSection
+EndGlobal
