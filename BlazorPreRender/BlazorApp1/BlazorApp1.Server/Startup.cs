@@ -7,7 +7,10 @@ namespace BlazorApp1.Server
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services) { }
+        public void ConfigureServices(IServiceCollection services) 
+        {
+            services.AddRazorPages();
+        }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -31,7 +34,8 @@ namespace BlazorApp1.Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapFallbackToFile("index.html");
+                endpoints.MapRazorPages();
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
