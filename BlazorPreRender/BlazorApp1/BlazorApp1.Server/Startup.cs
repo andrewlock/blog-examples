@@ -1,7 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Linq;
+using System.Net.Http;
 
 namespace BlazorApp1.Server
 {
@@ -10,6 +15,14 @@ namespace BlazorApp1.Server
         public void ConfigureServices(IServiceCollection services) 
         {
             services.AddRazorPages();
+
+            services.AddSingleton<HttpClient>(sp =>
+            {
+                var server = sp.GetRequiredService<IServer>();
+                var addressFeature = server.Features.Get<IServerAddressesFeature>();
+                var baseAddress = addressFeature.Addresses.First();
+                return new HttpClient { BaseAddress = new Uri(baseAddress) };
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
