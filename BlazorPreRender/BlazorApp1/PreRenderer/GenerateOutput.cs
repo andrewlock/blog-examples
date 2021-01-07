@@ -44,9 +44,9 @@ namespace PreRenderer
         /// Massage the values into something that works for xunit theory
         /// </summary>
         public static IEnumerable<object[]> GetPagesToPreRender()
-            => PrerenderRoutes
-            .Values
-            .Select(config => new object[] { config });
+            => PrerenderRouteHelper
+                .GetRoutes(typeof(BlazorApp1.App).Assembly)
+                .Select(config => new object[] { config });
 
         [Theory, Trait("Category", "PreRender")]
         [MemberData(nameof(GetPagesToPreRender))]
