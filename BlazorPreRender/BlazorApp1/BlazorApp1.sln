@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Server", "Blazor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreRenderer", "PreRenderer\PreRenderer.csproj", "{49B31D6A-5EC3-4813-89EC-E4C005488A1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGenerators", "SourceGenerators\SourceGenerators.csproj", "{2431466A-BDF3-4998-B3C9-85C4B24FC293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{49B31D6A-5EC3-4813-89EC-E4C005488A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49B31D6A-5EC3-4813-89EC-E4C005488A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49B31D6A-5EC3-4813-89EC-E4C005488A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2431466A-BDF3-4998-B3C9-85C4B24FC293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2431466A-BDF3-4998-B3C9-85C4B24FC293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2431466A-BDF3-4998-B3C9-85C4B24FC293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2431466A-BDF3-4998-B3C9-85C4B24FC293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

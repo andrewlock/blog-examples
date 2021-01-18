@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BlazorApp1;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -44,9 +45,9 @@ namespace PreRenderer
         /// Massage the values into something that works for xunit theory
         /// </summary>
         public static IEnumerable<object[]> GetPagesToPreRender()
-            => PrerenderRouteHelper
-                .GetRoutes(typeof(BlazorApp1.App).Assembly)
-                .Select(config => new object[] { config });
+            => AppRoutes.Routes
+                //PrerenderRouteHelper.GetRoutes(typeof(BlazorApp1.App).Assembly)
+                .Select(route => new object[] { route });
 
         [Theory, Trait("Category", "PreRender")]
         [MemberData(nameof(GetPagesToPreRender))]

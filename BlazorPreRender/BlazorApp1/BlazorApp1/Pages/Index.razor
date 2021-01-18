@@ -2,6 +2,15 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+This app has the following routes:
+
+<ul>
+@foreach (var route in AppRoutes.Routes)
+{
+    <li>
+        <code>@route</code>
+    </li>
+}
+</ul>
 
 <SurveyPrompt Title="How is Blazor working for you?" />
