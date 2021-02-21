@@ -39,7 +39,33 @@ namespace BlazorApp1
             return @"
 namespace BlazorApp1
 {
-    public record PageDetail(string Route, string Title);
+    public record PageDetail(string Route, string Title, string Icon);
+}
+";
+        }
+
+        public static string MenuItemAttribute()
+        {
+            return @"
+namespace BlazorApp1
+{
+    public class MenuItemAttribute : System.Attribute
+    {
+        public string Icon { get; }
+        public string Description { get; }
+        public int Order { get; }
+
+        public MenuItemAttribute(
+            string icon,
+            string description,
+            int order = 0
+        )
+        {
+            Icon = icon;
+            Description = description;
+            Order = order;
+        }
+    }
 }
 ";
         }
@@ -62,7 +88,7 @@ namespace BlazorApp1
 ");
             foreach (var page in pages)
             {
-                sb.AppendLine($"new PageDetail(\"{page.Route}\", \"{page.Title}\"),");
+                sb.AppendLine($"new PageDetail(\"{page.Route}\", \"{page.Title}\", \"{page.Icon}\"),");
             }
 
             sb.Append(@"

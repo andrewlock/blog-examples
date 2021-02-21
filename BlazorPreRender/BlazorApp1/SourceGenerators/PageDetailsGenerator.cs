@@ -15,17 +15,17 @@ namespace SourceGenerators
     public class PageDetailsGenerator : ISourceGenerator
     {
         private const string RouteAttributeName = "Microsoft.AspNetCore.Components.RouteAttribute";
-        private const string DescriptionAttributeName = "System.ComponentModel.Description";
+        private const string MenuItemAttributeName = "MenuItem";
         
         public void Execute(GeneratorExecutionContext context)
         {
             try
             {
-                // Debugger.Launch();
                 
                 IEnumerable<RouteableComponent> menuComponents = GetMenuComponents(context.Compilation);
 
                 context.AddSource("PageDetail", SourceText.From(Templates.PageDetail(), Encoding.UTF8));
+                context.AddSource("MenuItemAttribute", SourceText.From(Templates.MenuItemAttribute(), Encoding.UTF8));
                 var pageDetailsSource = SourceText.From(Templates.MenuPages(menuComponents), Encoding.UTF8);
                 context.AddSource("PageDetails", pageDetailsSource);
             }
@@ -47,11 +47,13 @@ namespace SourceGenerators
             IEnumerable<ClassDeclarationSyntax> allClasses = allNodes
                 .Where(d => d.IsKind(SyntaxKind.ClassDeclaration))
                 .OfType<ClassDeclarationSyntax>();
-            
+
             return allClasses
                 .Select(component => TryGetMenuComponent(compilation, component))
                 .Where(page => page is not null)
-                .Cast<RouteableComponent>()// stops the nullable lies
+                .Cast<RouteableComponent>() // stops the nullable lies
+                .OrderBy(x => x.Order)
+                .ThenBy(x => x.Title)
                 .ToImmutableArray();
         }
         
@@ -61,20 +63,20 @@ namespace SourceGenerators
                 .SelectMany(x => x.Attributes)
                 .Where(attr => 
                     attr.Name.ToString() == RouteAttributeName
-                    || attr.Name.ToString() == DescriptionAttributeName)
+                    || attr.Name.ToString() == MenuItemAttributeName)
                 .ToList();
 
             var routeAttribute = attributes.FirstOrDefault(attr => attr.Name.ToString() == RouteAttributeName);
-            var descriptionAttribute = attributes.FirstOrDefault(attr => attr.Name.ToString() == DescriptionAttributeName);
+            var menuItemAttribute = attributes.FirstOrDefault(attr => attr.Name.ToString() == MenuItemAttributeName);
 
-            if (routeAttribute is null || descriptionAttribute is null)
+            if (routeAttribute is null || menuItemAttribute is null)
             {
                 return null;
             }
                 
             if (
                 routeAttribute.ArgumentList?.Arguments.Count != 1 ||
-                descriptionAttribute.ArgumentList?.Arguments.Count != 1)
+                menuItemAttribute.ArgumentList?.Arguments.Count < 2)
             {
                 // no route path or description value
                 return null;
@@ -86,11 +88,27 @@ namespace SourceGenerators
             var routeExpr = routeArg.Expression;
             var routeTemplate = semanticModel.GetConstantValue(routeExpr).ToString();
             
-            var descriptionArg = descriptionAttribute.ArgumentList.Arguments[0];
+            var iconArg = menuItemAttribute.ArgumentList.Arguments[0];
+            var iconExpr = iconArg.Expression;
+            var icon = semanticModel.GetConstantValue(iconExpr).ToString();
+            
+            var descriptionArg = menuItemAttribute.ArgumentList.Arguments[1];
             var descriptionExpr = descriptionArg.Expression;
             var title = semanticModel.GetConstantValue(descriptionExpr).ToString();
 
-            return new RouteableComponent(routeTemplate, title);
+            var order = 0;
+            if (menuItemAttribute.ArgumentList?.Arguments.Count == 3)
+            {
+                var orderArg = menuItemAttribute.ArgumentList.Arguments[2];
+                var orderExpr = orderArg.Expression;
+                var maybeOrder = semanticModel.GetConstantValue(orderExpr);
+                if (maybeOrder.HasValue)
+                {
+                    order = (int) maybeOrder.Value;
+                }
+            }
+            
+            return new RouteableComponent(routeTemplate, title, icon, order);
         }
     }
 }
