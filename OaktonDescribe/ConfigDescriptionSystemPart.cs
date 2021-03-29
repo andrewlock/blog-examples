@@ -30,26 +30,40 @@ namespace OaktonDescribe
             {
                 foreach (IConfigurationSection child in children)
                 {
-                    (string Value, IConfigurationProvider Provider) valueAndProvider = GetValueAndProvider(_configRoot, child.Path);
-        
+                    var valuesAndProviders = GetValueAndProviders(_configRoot, child.Path);
+
                     IHasTreeNodes parent = node;
-                    if (valueAndProvider.Provider != null)
+                    if (valuesAndProviders.Count == 0)
                     {
-                            node.AddNode(new Table()
-                                .Border(TableBorder.None)
-                                .HideHeaders()
-                                .AddColumn("Key")
-                                .AddColumn("Value")
-                                .AddColumn("Provider")
-                                .HideHeaders()
-                                .AddRow($"[yellow]{child.Key}[/]", valueAndProvider.Value, $@"([grey]{valueAndProvider.Provider}[/])")
-                            );
+                        parent = node.AddNode($"[blue]{child.Key}[/]");
                     }
                     else
                     {
-                        parent = node.AddNode($"[yellow]{child.Key}[/]");
+                        var current = valuesAndProviders.Pop();
+                        var currentNode = node.AddNode(new Table()
+                            .Border(TableBorder.None)
+                            .HideHeaders()
+                            .AddColumn("Key")
+                            .AddColumn("Value")
+                            .AddColumn("Provider")
+                            .HideHeaders()
+                            .AddRow($"[yellow]{child.Key}[/]", current.Value, $@"([grey]{current.Provider}[/])")
+                        );
+                    
+                        // Add the overriden values
+                        foreach (var valueAndProvider in valuesAndProviders)
+                        {
+                            currentNode.AddNode(new Table()
+                                .Border(TableBorder.None)
+                                .HideHeaders()
+                                .AddColumn("Value")
+                                .AddColumn("Provider")
+                                .HideHeaders()
+                                .AddRow($"[strikethrough]{valueAndProvider.Value}[/]", $@"([grey]{valueAndProvider.Provider}[/])")
+                            );
+                        }
                     }
-        
+
                     RecurseChildren(parent, child.GetChildren());
                 }
             }
@@ -63,19 +77,20 @@ namespace OaktonDescribe
             return Task.CompletedTask;
         }
         
-        private static (string Value, IConfigurationProvider Provider) GetValueAndProvider(
+        private static Stack<(string Value, IConfigurationProvider Provider)> GetValueAndProviders(
             IConfigurationRoot root,
             string key)
         {
-            foreach (IConfigurationProvider provider in root.Providers.Reverse())
+            var stack = new Stack<(string, IConfigurationProvider)>();
+            foreach (IConfigurationProvider provider in root.Providers)
             {
                 if (provider.TryGet(key, out string value))
                 {
-                    return (value, provider);
+                    stack.Push((value, provider));
                 }
             }
 
-            return (null, null);
+            return stack;
         }
     }
 }
