@@ -29,7 +29,7 @@ namespace AddingDefaultSecurityHeaders.Middleware
                 throw new ArgumentNullException(nameof(next));
             }
 
-            if (_policy == null)
+            if (policy == null)
             {
                 throw new ArgumentNullException(nameof(policy));
             }
