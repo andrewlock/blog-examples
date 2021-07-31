@@ -41,19 +41,19 @@ namespace SerilogRequestLogging
         /// logged using the provided <paramref name="traceLevel" />.
         /// </summary>
         /// <param name="traceLevel">The level to use for logging "trace" endpoints</param>
-        /// <param name="traceEndointNames">The display name of endpoints to be considered "trace" endpoints</param>
+        /// <param name="traceEndpointNames">The display name of endpoints to be considered "trace" endpoints</param>
         /// <returns></returns>
-        public static Func<HttpContext, double, Exception, LogEventLevel> GetLevel(LogEventLevel traceLevel, params string[] traceEndointNames)
+        public static Func<HttpContext, double, Exception, LogEventLevel> GetLevel(LogEventLevel traceLevel, params string[] traceEndpointNames)
         {
-            if (traceEndointNames is null || traceEndointNames.Length == 0)
+            if (traceEndpointNames is null || traceEndpointNames.Length == 0)
             {
-                throw new ArgumentNullException(nameof(traceEndointNames));
+                throw new ArgumentNullException(nameof(traceEndpointNames));
             }
 
             return (ctx, _, ex) => 
                 IsError(ctx, ex) 
                 ? LogEventLevel.Error
-                : IsTraceEndpoint(ctx, traceEndointNames)
+                : IsTraceEndpoint(ctx, traceEndpointNames)
                     ? traceLevel
                     : LogEventLevel.Information;
         }
@@ -61,14 +61,14 @@ namespace SerilogRequestLogging
         static bool IsError(HttpContext ctx, Exception ex) 
             => ex != null || ctx.Response.StatusCode > 499;
 
-        static bool IsTraceEndpoint(HttpContext ctx, string[] traceEndoints)
+        static bool IsTraceEndpoint(HttpContext ctx, string[] traceEndpoints)
         {
             var endpoint = ctx.GetEndpoint();
             if (endpoint is object)
             {
-                for (var i = 0; i < traceEndoints.Length; i++)
+                for (var i = 0; i < traceEndpoints.Length; i++)
                 {
-                    if (string.Equals(traceEndoints[i], endpoint.DisplayName, StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(traceEndpoints[i], endpoint.DisplayName, StringComparison.OrdinalIgnoreCase))
                     {
                         return true;
                     }
