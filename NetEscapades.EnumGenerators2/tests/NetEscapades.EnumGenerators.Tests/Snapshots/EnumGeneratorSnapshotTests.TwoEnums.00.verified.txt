@@ -1,0 +1,14 @@
+﻿{
+  Diagnostics: [
+    {
+      Id: TEST01,
+      Title: A test diagnostic,
+      Severity: Warning,
+      WarningLevel: 1,
+      Location: : (5,0)-(10,1),
+      MessageFormat: A description about the problem,
+      Message: A description about the problem,
+      Category: tests
+    }
+  ]
+}
