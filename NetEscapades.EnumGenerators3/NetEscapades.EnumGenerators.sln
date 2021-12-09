@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{33363A58-41F1-4885-9A40-77A302DB9556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEscapades.EnumGenerators", "src\NetEscapades.EnumGenerators\NetEscapades.EnumGenerators.csproj", "{38C93949-0BB6-4308-8868-DB9CB8604F98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{313BAAC4-25D6-4670-BA40-A35853FB32B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEscapades.EnumGenerators.Tests", "tests\NetEscapades.EnumGenerators.Tests\NetEscapades.EnumGenerators.Tests.csproj", "{45AD50FE-FEE5-4378-BA34-1559B19377E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEscapades.EnumGenerators.IntegrationTests", "tests\NetEscapades.EnumGenerators.IntegrationTests\NetEscapades.EnumGenerators.IntegrationTests.csproj", "{8AA7585F-1A1E-4F40-8B4A-9E521F551C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEscapades.EnumGenerators.NugetIntegrationTests", "tests\NetEscapades.EnumGenerators.NugetIntegrationTests\NetEscapades.EnumGenerators.NugetIntegrationTests.csproj", "{E2711D6D-9907-4655-93B2-883592B9E830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38C93949-0BB6-4308-8868-DB9CB8604F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C93949-0BB6-4308-8868-DB9CB8604F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C93949-0BB6-4308-8868-DB9CB8604F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C93949-0BB6-4308-8868-DB9CB8604F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AD50FE-FEE5-4378-BA34-1559B19377E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AD50FE-FEE5-4378-BA34-1559B19377E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AD50FE-FEE5-4378-BA34-1559B19377E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AD50FE-FEE5-4378-BA34-1559B19377E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA7585F-1A1E-4F40-8B4A-9E521F551C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA7585F-1A1E-4F40-8B4A-9E521F551C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA7585F-1A1E-4F40-8B4A-9E521F551C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA7585F-1A1E-4F40-8B4A-9E521F551C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2711D6D-9907-4655-93B2-883592B9E830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2711D6D-9907-4655-93B2-883592B9E830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38C93949-0BB6-4308-8868-DB9CB8604F98} = {33363A58-41F1-4885-9A40-77A302DB9556}
+		{45AD50FE-FEE5-4378-BA34-1559B19377E8} = {313BAAC4-25D6-4670-BA40-A35853FB32B1}
+		{8AA7585F-1A1E-4F40-8B4A-9E521F551C82} = {313BAAC4-25D6-4670-BA40-A35853FB32B1}
+		{E2711D6D-9907-4655-93B2-883592B9E830} = {313BAAC4-25D6-4670-BA40-A35853FB32B1}
+	EndGlobalSection
+EndGlobal
