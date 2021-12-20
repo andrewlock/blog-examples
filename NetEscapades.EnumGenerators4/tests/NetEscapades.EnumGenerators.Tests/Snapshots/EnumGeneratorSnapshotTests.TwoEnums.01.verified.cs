@@ -11,7 +11,10 @@ namespace NetEscapades.EnumGenerators
                 MyTestEnums.Colour.Blue => nameof(MyTestEnums.Colour.Blue),
                 _ => value.ToString(),
             };
+    }
 
+    public static partial class EnumExtensions
+    {
         public static string ToStringFast(this MyTestEnums.Direction value)
             => value switch
             {
@@ -21,6 +24,5 @@ namespace NetEscapades.EnumGenerators
                 MyTestEnums.Direction.Down => nameof(MyTestEnums.Direction.Down),
                 _ => value.ToString(),
             };
-
     }
 }

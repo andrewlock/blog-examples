@@ -13,6 +13,5 @@ namespace NetEscapades.EnumGenerators
                 MyTestEnums.Direction.Down => nameof(MyTestEnums.Direction.Down),
                 _ => value.ToString(),
             };
-
     }
 }

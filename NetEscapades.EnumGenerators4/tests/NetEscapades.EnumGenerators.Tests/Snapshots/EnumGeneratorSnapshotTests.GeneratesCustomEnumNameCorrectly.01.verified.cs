@@ -2,7 +2,7 @@
 
 namespace NetEscapades.EnumGenerators
 {
-    public static partial class EnumExtensions
+    public static partial class ColourExtensions
     {
         public static string ToStringFast(this Colour value)
             => value switch

@@ -17,4 +17,16 @@ public class EnumExtensionsTests
 
         Assert.Equal(expected, actual);
     }
+
+    [Theory]
+    [InlineData(Direction.Up)]
+    [InlineData((Direction)15)]
+    [InlineData((Direction)0)]
+    public void CustomExtensionNameToStringFast(Direction value)
+    {
+        var expected = value.ToString();
+        var actual = value.ToStringFast();
+
+        Assert.Equal(expected, actual);
+    }
 }

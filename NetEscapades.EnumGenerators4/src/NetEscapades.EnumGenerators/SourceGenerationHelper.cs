@@ -10,6 +10,7 @@ namespace NetEscapades.EnumGenerators
     [System.AttributeUsage(System.AttributeTargets.Enum)]
     public class EnumExtensionsAttribute : System.Attribute
     {
+        public string ExtensionClassName { get; set; }
     }
 }";
     public static string GenerateExtensionClass(List<EnumToGenerate> enumsToGenerate)
@@ -17,12 +18,12 @@ namespace NetEscapades.EnumGenerators
         var sb = new StringBuilder();
         sb.Append(@"
 namespace NetEscapades.EnumGenerators
-{
-    public static partial class EnumExtensions
-    {");
+{");
         foreach(var enumToGenerate in enumsToGenerate)
         {
             sb.Append(@"
+    public static partial class ").Append(enumToGenerate.ExtensionName).Append(@"
+    {
         public static string ToStringFast(this ").Append(enumToGenerate.Name).Append(@" value)
             => value switch
             {");
@@ -38,11 +39,10 @@ namespace NetEscapades.EnumGenerators
             sb.Append(@"
                 _ => value.ToString(),
             };
+    }
 ");
         }
-        sb.Append(@"
-    }
-}");
+        sb.Append('}');
 
         return sb.ToString();
     }

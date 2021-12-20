@@ -111,6 +111,26 @@ public class EnumGenerator : IIncrementalGenerator
             }
 
             string enumName = enumSymbol.ToString();
+            string extensionName = "EnumExtensions";
+
+            foreach (AttributeData attributeData in enumSymbol.GetAttributes())
+            {
+                if (!enumAttribute.Equals(attributeData.AttributeClass, SymbolEqualityComparer.Default))
+                {
+                    continue;
+                }
+
+                foreach (KeyValuePair<string, TypedConstant> namedArgument in attributeData.NamedArguments)
+                {
+                    if (namedArgument.Key == "ExtensionClassName"
+                        && namedArgument.Value.Value?.ToString() is { } n)
+                    {
+                        extensionName = n;
+                    }
+                }
+                break;
+            }
+
             ImmutableArray<ISymbol> enumMembers = enumSymbol.GetMembers();
             var members = new List<string>(enumMembers.Length);
 
@@ -122,7 +142,7 @@ public class EnumGenerator : IIncrementalGenerator
                 }
             }
 
-            enumsToGenerate.Add(new EnumToGenerate(enumName, members));
+            enumsToGenerate.Add(new EnumToGenerate(extensionName, enumName, members));
         }
 
         return enumsToGenerate;
