@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "urls_in_a_hosted_service": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://[::1]:0;http://[::1]:0",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+  }
+}
