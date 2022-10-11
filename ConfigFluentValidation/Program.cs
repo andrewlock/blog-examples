@@ -1,17 +1,24 @@
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register the validator
+// Use the extension method
+builder.Services.AddWithValidation<SlackApiSettings, SlackApiSettingsValidator>("SlackApi");
+
+// OR:
+
+// 1. Register the validator
 builder.Services.AddScoped<IValidator<SlackApiSettings>, SlackApiSettingsValidator>();
 
+// 2. Register the settings
 builder.Services.AddOptions<SlackApiSettings>()
     .BindConfiguration("SlackApi")
     .ValidateFluentValidation() // <- Enable validation
     .ValidateOnStart(); // <- Validate on app start
 
-// Explicitly register the settings object by delegating to the IOptions object
+// Optional: Explicitly register the settings object by delegating to the IOptions object
 builder.Services.AddSingleton(resolver =>
         resolver.GetRequiredService<IOptions<SlackApiSettings>>().Value);
 
@@ -81,12 +88,12 @@ public class FluentValidationOptions<TOptions> : IValidateOptions<TOptions> wher
 
         // Ensure options are provided to validate against
         ArgumentNullException.ThrowIfNull(options);
-        
+
         // Validators are registered as scoped, so need to create a scope,
         // as we will be called from the root scope
-        using var scope = _serviceProvider.CreateScope();
-        var validator = scope.ServiceProvider.GetRequiredService<IValidator<TOptions>>();
-        var results = validator.Validate(options);
+        using IServiceScope scope = _serviceProvider.CreateScope();
+        IValidator<TOptions> validator = scope.ServiceProvider.GetRequiredService<IValidator<TOptions>>();
+        ValidationResult? results = validator.Validate(options);
         if (results.IsValid)
         {
             return ValidateOptionsResult.Success;
@@ -100,5 +107,22 @@ public class FluentValidationOptions<TOptions> : IValidateOptions<TOptions> wher
         }
 
         return ValidateOptionsResult.Fail(errors);
+    }
+}
+
+public static class FluentValidationOptionsExtensions
+{
+    public static OptionsBuilder<TOptions> AddWithValidation<TOptions, TValidator>(
+        this IServiceCollection services,
+        string configurationSection)
+    where TOptions : class
+    where TValidator : class, IValidator<TOptions>
+    {
+        services.AddScoped<IValidator<TOptions>, TValidator>();
+
+        return services.AddOptions<TOptions>()
+            .BindConfiguration(configurationSection)
+            .ValidateFluentValidation()
+            .ValidateOnStart();
     }
 }
