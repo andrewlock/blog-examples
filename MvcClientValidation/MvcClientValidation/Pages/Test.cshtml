@@ -1,0 +1,22 @@
+﻿@page
+@model MvcClientValidation.Pages.TestModel
+
+<div class="col-md-6 offset-md-3">
+    <form method="post">
+        <div class="form-floating mb-3">
+            <input class="form-control" asp-for="Input.Name">
+            <label asp-for="Input.Name"></label>
+            <span class="text-danger field-validation-valid" asp-validation-for="Input.Name"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" asp-for="Input.Email">
+            <label asp-for="Input.Email"></label>
+            <span class="text-danger field-validation-valid" asp-validation-for="Input.Email"></span>
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

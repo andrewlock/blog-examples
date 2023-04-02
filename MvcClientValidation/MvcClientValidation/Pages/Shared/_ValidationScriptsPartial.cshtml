@@ -1,0 +1,14 @@
+﻿<script src="https://www.unpkg.com/aspnet-client-validation/dist/aspnet-validation.min.js"
+        crossorigin="anonymous" integrity="sha384-4E0R5+D480pDlcgfpDw2NZDUAX0YsK6J4Zk6o4raasSXMaAlatx9tyNxkFBESu6C"></script>
+<script>
+    const v = new aspnetValidation.ValidationService()
+    v.addProvider('endswith', (value, element, params) => {
+        if (!value) {
+            // Let [Required] handle validation error for empty input...
+            return true;
+        }
+
+        return value.endsWith(params.value);
+    });
+    v.bootstrap();
+</script>

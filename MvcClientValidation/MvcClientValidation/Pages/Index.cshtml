@@ -1,0 +1,11 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var message = TempData["Message"] ?? "Welcome";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@message</h1>
+    <p>Test out <a asp-page="Test">client-side validation</a></p>
+</div>
