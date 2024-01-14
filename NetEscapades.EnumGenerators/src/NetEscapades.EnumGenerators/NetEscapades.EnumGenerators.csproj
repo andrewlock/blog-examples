@@ -13,8 +13,11 @@
 
   <!-- The following libraries include the source generator interfaces and types we need -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" PrivateAssets="all" />
+
+    <!-- If you're targetting the .NET 7 SDK, use the following package instead   -->
+    <!-- <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" PrivateAssets="all" />-->
   </ItemGroup>
 
   <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->

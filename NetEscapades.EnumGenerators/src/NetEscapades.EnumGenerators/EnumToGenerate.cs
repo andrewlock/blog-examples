@@ -1,13 +1,13 @@
 ﻿namespace NetEscapades.EnumGenerators;
 
-public readonly struct EnumToGenerate
+public readonly record struct EnumToGenerate
 {
     public readonly string Name;
-    public readonly List<string> Values;
+    public readonly EquatableArray<string> Values;
 
     public EnumToGenerate(string name, List<string> values)
     {
         Name = name;
-        Values = values;
+        Values = new(values.ToArray());
     }
 }
