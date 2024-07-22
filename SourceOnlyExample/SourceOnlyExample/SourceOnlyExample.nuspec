@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SourceOnlyExample</id>
+    <version>1.0.0</version>
+    <developmentDependency>true</developmentDependency>
+    <authors>Andrew Lock</authors>
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://andrewlock.net/creating-source-only-nuget-packages/</projectUrl>
+    <description>An example source-code only package</description>
+    <tags>source compiletime</tags>
+  </metadata>
+  <files>
+      <!--
+      The files are included twice:
+        As contentFiles (for PackageReferences)
+        As content (for packages.config).
+      -->
+      <file src="*.cs" target="contentFiles/cs/netstandard2.0/SourceOnlyExample/"/>
+      <file src="*.cs" target="content/cs/netstandard2.0/SourceOnlyExample/"/>
+
+      <!-- Hide content files from Visual Studio solution explorer  -->
+      <file src="SourceOnlyExample.props" target="build/SourceOnlyExample.props" />
+  </files>
+</package>
